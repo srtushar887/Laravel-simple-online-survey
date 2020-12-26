@@ -64,13 +64,13 @@
                 <a class="nav-link" href="{{route('dashboard')}}"><i class="feather-briefcase mr-2"></i><span class="d-none d-lg-inline">Home</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="jobs.html"><i class="feather-briefcase mr-2"></i><span class="d-none d-lg-inline">Current Balance (100TK)</span></a>
+                <a class="nav-link" href="{{route('user.mobile.recharge')}}"><i class="feather-briefcase mr-2"></i><span class="d-none d-lg-inline">Mobile Recharge</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="jobs.html"><i class="feather-briefcase mr-2"></i><span class="d-none d-lg-inline">Mobile Recharge</span></a>
+                <a class="nav-link" href="{{route('user.withdraw.money')}}"><i class="feather-briefcase mr-2"></i><span class="d-none d-lg-inline">Withdraw Money</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="jobs.html"><i class="feather-briefcase mr-2"></i><span class="d-none d-lg-inline">Transfer Money</span></a>
+                <a class="nav-link" href="{{route('user.transfer.money')}}"><i class="feather-briefcase mr-2"></i><span class="d-none d-lg-inline">Transfer Money</span></a>
             </li>
             <li class="nav-item dropdown mr-2">
                 <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -81,6 +81,7 @@
                     <a class="dropdown-item" href="jobs.html"><i class="feather-briefcase mr-1"></i> Earning History</a>
                     <a class="dropdown-item" href="jobs.html"><i class="feather-briefcase mr-1"></i> Withdraw History</a>
                     <a class="dropdown-item" href="jobs.html"><i class="feather-briefcase mr-1"></i> Send Money History</a>
+                    <a class="dropdown-item" href="jobs.html"><i class="feather-briefcase mr-1"></i> Mobile Recharge History</a>
                 </div>
             </li>
             <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown">

@@ -49,6 +49,8 @@ class AdminController extends Controller
         $gen->site_phone_number = $request->site_phone_number;
         $gen->site_currency = $request->site_currency;
         $gen->per_post_money = floatval($request->per_post_money);
+        $gen->per_like_money = floatval($request->per_like_money);
+        $gen->transfer_amount_percentage = $request->transfer_amount_percentage;
         $gen->site_address = $request->site_address;
         $gen->save();
 

@@ -168,6 +168,23 @@
                     </li>
 
 
+                    <li>
+                        <a href="{{route('admin.mobile.recharge')}}">
+                            <i class="uil-home-alt"></i>
+                            <span>Mobile Recharge</span>
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="{{route('admin.withdraw.money')}}">
+                            <i class="uil-home-alt"></i>
+                            <span>Withdraw Money</span>
+                        </a>
+                    </li>
+
+
+
 
                 </ul>
             </div>

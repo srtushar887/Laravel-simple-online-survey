@@ -33,13 +33,13 @@
                                     <input type="text" class="form-control" name="site_email" value="{{$gen->site_email}}">
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="validationCustom01">Site Phone Number</label>
                                     <input type="text" class="form-control" name="site_phone_number" value="{{$gen->site_phone_number}}">
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="validationCustom01">Site Currency</label>
                                     <input type="text" class="form-control" name="site_currency" value="{{$gen->site_currency}}">
@@ -47,8 +47,20 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="validationCustom01">Per Post User Get</label>
+                                    <label for="validationCustom01">Per Post User Get Money</label>
                                     <input type="text" class="form-control" name="per_post_money" value="{{$gen->per_post_money}}">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="validationCustom01">Per Like User Get Money</label>
+                                    <input type="text" class="form-control" name="per_like_money" value="{{$gen->per_like_money}}">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="validationCustom01">Transfer Amount (%)</label>
+                                    <input type="text" class="form-control" name="transfer_amount_percentage" value="{{$gen->transfer_amount_percentage}}">
                                 </div>
                             </div>
                             <div class="col-md-12">

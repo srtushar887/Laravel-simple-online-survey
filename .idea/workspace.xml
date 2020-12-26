@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="64ee45a7-d400-464e-b06e-dd73e9eede32" name="Default Changelist" comment="" />
+    <list default="true" id="64ee45a7-d400-464e-b06e-dd73e9eede32" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/User/UserPostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/User/UserPostController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/page/generalSettings.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/page/generalSettings.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/user.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/user.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/include/leftbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/include/leftbar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/post/postDetails.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/post/postDetails.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,6 +20,9 @@
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -135,6 +148,9 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1lsBJEG5oYsGYmwfA6tCg3h4Lon" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -171,12 +187,24 @@
       <workItem from="1608876123874" duration="22096000" />
       <workItem from="1608948896388" duration="28000" />
       <workItem from="1608958098928" duration="3573000" />
-      <workItem from="1608962101114" duration="1881000" />
+      <workItem from="1608962101114" duration="3924000" />
+      <workItem from="1608967244977" duration="8588000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

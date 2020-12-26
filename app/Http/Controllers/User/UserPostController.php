@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\general_setting;
 use App\Models\post_comment;
 use App\Models\post_like;
 use App\Models\survey_question;
+use App\Models\transaction;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
@@ -48,28 +51,45 @@ class UserPostController extends Controller
 
 
 
-    public function post_like_save(Request $request)
+    public function post_like_save($id)
     {
-        $post = survey_question::where('id',$request->postid)->first();
+        $post = survey_question::where('id',$id)->first();
         $exists_post = post_like::where('user_id',Auth::user()->id)
-            ->where('post_id',$request->postid)
+            ->where('post_id',$id)
             ->where('user_type',2)
             ->count();
 
 
         if ($exists_post > 0) {
-            return 'alreadylike';
+            return back()->with('alert','You Already Like this post');
         }else{
             if ($post->user_type == 2 && $post->user_id == Auth::user()->id) {
-                return 'mypost';
+                return back()->with('alert','You can not like your post');
             }else{
                 $new_post_like = new post_like();
                 $new_post_like->user_id = Auth::user()->id;
-                $new_post_like->post_id = $request->postid;
+                $new_post_like->post_id = $id;
                 $new_post_like->user_type = 2;
                 $new_post_like->save();
 
-                return 'postlike';
+                $gen = general_setting::first();
+                $user_bal = User::where('id',Auth::user()->id)->first();
+                $user_bal->balance = $user_bal->balance + $gen->per_like_money;
+                $user_bal->save();
+
+
+                $user_tran = new transaction();
+                $user_tran->user_id = Auth::user()->id;
+                $user_tran->amount = $gen->per_like_money;
+                $user_tran->message = "Post Like";
+                $user_tran->type = 1;
+                $user_tran->status = 1;
+                $user_tran->save();
+
+
+
+
+                return back()->with('success','You Liked this post');
             }
         }
 
@@ -92,6 +112,21 @@ class UserPostController extends Controller
             $new_comment->user_type = 2;
             $new_comment->comment = $request->comment;
             $new_comment->save();
+
+
+            $gen = general_setting::first();
+            $user_bal = User::where('id',Auth::user()->id)->first();
+            $user_bal->balance = $user_bal->balance + $gen->per_post_money;
+            $user_bal->save();
+
+
+            $user_tran = new transaction();
+            $user_tran->user_id = Auth::user()->id;
+            $user_tran->amount = $gen->per_post_money;
+            $user_tran->message = "Post Comment";
+            $user_tran->type = 2;
+            $user_tran->status = 1;
+            $user_tran->save();
 
             return back()->with('success','Comment Successfully Created');
         }

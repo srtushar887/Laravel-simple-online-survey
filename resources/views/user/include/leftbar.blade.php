@@ -13,17 +13,17 @@
         <div class="d-flex">
             <div class="col-6 border-right p-3">
                 <h6 class="font-weight-bold text-dark mb-1">
-                    {{Auth::user()->balance}}
+                    {{$gn->site_currency}}{{Auth::user()->balance}}
                 </h6>
                 <p class="mb-0 text-black-50 small">Balance</p>
             </div>
             <div class="col-6 p-3">
-                <h6 class="font-weight-bold text-dark mb-1">{{Auth::user()->total_earning}}</h6>
+                <h6 class="font-weight-bold text-dark mb-1">{{$gn->site_currency}}{{Auth::user()->total_earning}}</h6>
                 <p class="mb-0 text-black-50 small">Total Earning</p>
             </div>
         </div>
         <div class="overflow-hidden border-top">
-            <a class="font-weight-bold p-3 d-block" href="profile.html"> View my profile </a>
+
         </div>
     </div>
 

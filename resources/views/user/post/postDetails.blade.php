@@ -22,9 +22,14 @@
                     </p>
                    </div>
                 <div class="card-footer border-0">
-                    <div class="footer-social"><span>3</span> Like &nbsp;
-                        <button class="mr-3 text-secondary btn btn-success btn-sm" style="background-color: white"><i class="feather-heart text-danger "></i> LIKE THIS POST</button>
+                    <?php
+                    $post_like_count = \App\Models\post_like::where('post_id',$post_details->id)->count();
+                    ?>
+                    <a href="{{route('user.post.like.save',$post_details->id)}}">
+                    <div class="footer-social"><span>{{$post_like_count}}</span> Like &nbsp;
+                            <button class="mr-3 text-secondary btn btn-success btn-sm" style="background-color: white"><i class="feather-heart text-danger "></i> LIKE THIS POST</button>
                     </div>
+                    </a>
                 </div>
             </div>
 

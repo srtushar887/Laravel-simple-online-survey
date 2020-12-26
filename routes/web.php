@@ -52,7 +52,19 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
         Route::post('/post-comment-save', [\App\Http\Controllers\User\UserPostController::class,'post_comment_save'])->name('user.post.comment.save');
 
         //post like
-        Route::post('/post-like-save', [\App\Http\Controllers\User\UserPostController::class,'post_like_save'])->name('user.post.like.save');
+        Route::get('/post-like-save/{id}', [\App\Http\Controllers\User\UserPostController::class,'post_like_save'])->name('user.post.like.save');
+
+        //mobile recharge
+        Route::get('/mobile-recharge', [\App\Http\Controllers\User\UserTransactionController::class,'mobile_recharge'])->name('user.mobile.recharge');
+        Route::post('/mobile-recharge-save', [\App\Http\Controllers\User\UserTransactionController::class,'mobile_recharge_save'])->name('user.mobile.recharge.save');
+
+        //withdraw money
+        Route::get('/withdraw-money', [\App\Http\Controllers\User\UserTransactionController::class,'withdraw_money'])->name('user.withdraw.money');
+        Route::post('/withdraw-money-save', [\App\Http\Controllers\User\UserTransactionController::class,'withdraw_money_save'])->name('user.withdraw.money.save');
+
+        //transfer money
+        Route::get('/transfer-money', [\App\Http\Controllers\User\UserTransactionController::class,'transfer_money'])->name('user.transfer.money');
+        Route::post('/transfer-money-save', [\App\Http\Controllers\User\UserTransactionController::class,'transfer_money_save'])->name('user.transfermoney.save');
     });
 });
 
@@ -93,5 +105,15 @@ Route::group(['middleware' => ['auth:admin']], function() {
         Route::get('/user-pin-get', [\App\Http\Controllers\Admin\AdminPinSurveyController::class,'user_pin_get'])->name('admin.get.userpin');
         Route::get('/create-pin', [\App\Http\Controllers\Admin\AdminPinSurveyController::class,'create_pin'])->name('admin.create.pin');
         Route::post('/create-pin-save', [\App\Http\Controllers\Admin\AdminPinSurveyController::class,'create_pin_save'])->name('admin.user.pin.save');
+
+        //mobile recharge
+        Route::get('/mobile-recharge', [\App\Http\Controllers\Admin\AdminTransactionController::class,'mobile_recharge'])->name('admin.mobile.recharge');
+        Route::get('/mobile-recharge-get', [\App\Http\Controllers\Admin\AdminTransactionController::class,'mobile_recharge_get'])->name('admin.get.mobile.recharge');
+        Route::post('/mobile-recharge-status-change', [\App\Http\Controllers\Admin\AdminTransactionController::class,'mobile_recharge_save'])->name('admin.mobile.recharge.save');
+
+        //withdraw money
+        Route::get('/withdraw-money', [\App\Http\Controllers\Admin\AdminTransactionController::class,'withdraw_money'])->name('admin.withdraw.money');
+        Route::get('/withdraw-money-get', [\App\Http\Controllers\Admin\AdminTransactionController::class,'withdraw_money_get'])->name('admin.get.withdrawmoney');
+        Route::post('/withdraw-money-status-change', [\App\Http\Controllers\Admin\AdminTransactionController::class,'withdraw_money_status_change'])->name('admin.withdraw.money.save');
     });
 });
