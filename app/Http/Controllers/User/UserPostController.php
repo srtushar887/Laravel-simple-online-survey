@@ -9,8 +9,10 @@ use App\Models\post_like;
 use App\Models\survey_question;
 use App\Models\transaction;
 use App\Models\User;
+use App\Models\user_earning;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 
 class UserPostController extends Controller
@@ -78,12 +80,14 @@ class UserPostController extends Controller
                 $user_bal->save();
 
 
-                $user_tran = new transaction();
+                $id = Str::random(3).Auth::user()->id.rand(1,9).Str::random(3);
+
+                $user_tran = new user_earning();
+                $user_tran->earning_id = $id;
                 $user_tran->user_id = Auth::user()->id;
                 $user_tran->amount = $gen->per_like_money;
                 $user_tran->message = "Post Like";
                 $user_tran->type = 1;
-                $user_tran->status = 1;
                 $user_tran->save();
 
 
@@ -120,12 +124,14 @@ class UserPostController extends Controller
             $user_bal->save();
 
 
-            $user_tran = new transaction();
+            $id = Str::random(3).Auth::user()->id.rand(1,9).Str::random(3);
+
+            $user_tran = new user_earning();
+            $user_tran->earning_id = $id;
             $user_tran->user_id = Auth::user()->id;
             $user_tran->amount = $gen->per_post_money;
             $user_tran->message = "Post Comment";
             $user_tran->type = 2;
-            $user_tran->status = 1;
             $user_tran->save();
 
             return back()->with('success','Comment Successfully Created');

@@ -48,7 +48,7 @@
                                     @if (!empty(Auth::user()->profile_image) && file_exists(Auth::user()->profile_image))
                                         <img src="{{asset(Auth::user()->profile_image)}}" style="height: 100px;width: 100px;">
                                     @else
-                                        <img src="https://www.slj.com/webfiles/1604461841106/images/default-user.png" style="height: 100px;width: 100px;">
+                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc4gAuboBQ2Y-6kl84wtIoK8e18cFsmxvIag&usqp=CAU" style="height: 100px;width: 100px;">
                                     @endif
 
                                     <input type="file" class="form-control" name="profile_image"  aria-label="Enter your name" required="" aria-describedby="nameLabel" data-msg="Please enter your name." data-error-class="u-has-error" data-success-class="u-has-success">

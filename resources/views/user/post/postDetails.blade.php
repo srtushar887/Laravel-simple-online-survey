@@ -68,7 +68,7 @@
                         @if (!empty($user->profile_image) && file_exists($user->profile_image))
                             <img class="d-flex mr-3 rounded" src="{{asset($user->profile_image)}}" alt="">
                         @else
-                            <img class="d-flex mr-3 rounded" src="https://www.slj.com/webfiles/1604461841106/images/default-user.png" alt="">
+                            <img class="d-flex mr-3 rounded" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc4gAuboBQ2Y-6kl84wtIoK8e18cFsmxvIag&usqp=CAU" alt="">
                         @endif
 
                         <div class="media-body">

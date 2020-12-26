@@ -8,9 +8,11 @@ use App\Models\mobile_recharge;
 use App\Models\transaction;
 use App\Models\transfer_money;
 use App\Models\User;
+use App\Models\user_earning;
 use App\Models\withdraw_money;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class UserTransactionController extends Controller
 {
@@ -26,13 +28,16 @@ class UserTransactionController extends Controller
         if (Auth::user()->balance < $request->amount) {
             return back()->with('alert','Insufficient Balance');
         }else{
+
+            $id = Str::random(3).Auth::user()->id.rand(1,9).Str::random(3);
+
             $new_recharge = new mobile_recharge();
+            $new_recharge->recharge_id = $id;
             $new_recharge->user_id = Auth::user()->id;
             $new_recharge->phone_number = $request->phone_number;
             $new_recharge->amount = $request->amount;
             $new_recharge->status = 1;
             $new_recharge->save();
-
 
 
             $user_tran = new transaction();
@@ -66,7 +71,11 @@ class UserTransactionController extends Controller
         if (Auth::user()->balance < $request->amount) {
             return back()->with('alert','Insufficient Balance');
         }else {
+
+            $id = Str::random(3).Auth::user()->id.rand(1,9).Str::random(3);
+
             $new_with = new withdraw_money();
+            $new_with->withdraw_id = $id;
             $new_with->user_id = Auth::user()->id;
             $new_with->amount = $request->amount;
             $new_with->status = 1;
@@ -102,7 +111,12 @@ class UserTransactionController extends Controller
                 if ($total_bal < $request->amount) {
                     return back()->with('alert','Insufficient Balance');
                 }else{
+
+
+                    $id = Str::random(3).Auth::user()->id.rand(1,9).Str::random(3);
+
                     $new_transfer = new transfer_money();
+                    $new_transfer->transfer_id = $id;
                     $new_transfer->user_id = Auth::user()->id;
                     $new_transfer->receiver_id = $receiver_user->id;
                     $new_transfer->amount = $request->amount;
@@ -127,6 +141,35 @@ class UserTransactionController extends Controller
         }
 
     }
+
+
+    public function earning_history()
+    {
+        $earnings = user_earning::where('user_id',Auth::user()->id)->orderBy('id','desc')->paginate(10);
+        return view('user.history.earningHistory',compact('earnings'));
+    }
+
+    public function withdraw_history()
+    {
+        $withraw = withdraw_money::where('user_id',Auth::user()->id)->orderBy('id','desc')->paginate(10);
+        return view('user.history.withdrawHistory',compact('withraw'));
+    }
+
+    public function send_money_history(Request $request)
+    {
+        $sendmoney = transfer_money::where('user_id',Auth::user()->id)->orderBy('id','desc')->paginate(10);
+        return view('user.history.sendmoneyHistory',compact('sendmoney'));
+    }
+
+    public function mobile_recharge_history()
+    {
+        $mobile_recharge = mobile_recharge::where('user_id',Auth::user()->id)->orderBy('id','desc')->paginate(10);
+        return view('user.history.mobileRechargeHistory',compact('mobile_recharge'));
+    }
+
+
+
+
 
 
 

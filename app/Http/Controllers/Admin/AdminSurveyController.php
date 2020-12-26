@@ -52,6 +52,7 @@ class AdminSurveyController extends Controller
         $new_survey->user_type = 1;
         $new_survey->user_id = Auth::user()->id;
         $new_survey->title = $request->title;
+        $new_survey->url = $request->url;
         $new_survey->question = $request->question;
         $new_survey->save();
 
@@ -81,6 +82,7 @@ class AdminSurveyController extends Controller
         }
 
         $survey_update->title = $request->title;
+        $survey_update->url = $request->url;
         $survey_update->question = $request->question;
         $survey_update->save();
 

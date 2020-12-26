@@ -17,7 +17,7 @@
     <div class="box mb-3 shadow-sm border rounded bg-white osahan-post postdiv">
         <div class="p-3 d-flex align-items-center border-bottom osahan-post-header">
             <div class="dropdown-list-image mr-3">
-                <img class="rounded-circle" src="https://freepikpsd.com/wp-content/uploads/2019/10/default-user-profile-image-png-2-Transparent-Images-1.png" alt="">
+                <img class="rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc4gAuboBQ2Y-6kl84wtIoK8e18cFsmxvIag&usqp=CAU" alt="">
             </div>
             <div class="font-weight-bold">
                 @if ($post->user_type == 1)
@@ -38,9 +38,15 @@
         <div class="p-3 border-bottom osahan-post-body">
             <div class="font-weight-bold">
                 <div class="small text-gray-500">{{$post->title}}</div>
+                <div class="small text-gray-500">
+                    <a href="{!! $post->url !!}" target="_blank">{{$post->url}}</a>
+                </div>
             </div>
             <p>{!! $post->question !!}</p>
-            <img src="{{asset($post->image)}}" style="width: 629px;height: 474px" class="img-fluid" alt="Responsive image">
+            @if (!empty($post->image) && file_exists($post->image))
+                <img src="{{asset($post->image)}}" style="width: 629px;height: 474px" class="img-fluid" alt="Responsive image">
+            @endif
+
         </div>
         <div class="p-3 border-bottom osahan-post-footer">
             <?php

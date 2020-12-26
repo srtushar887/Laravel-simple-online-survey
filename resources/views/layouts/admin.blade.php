@@ -6,12 +6,12 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Dashboard | Minible - Responsive Bootstrap 4 Admin Dashboard</title>
+    <title>{{$gn->site_name}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{asset('assets/admin/')}}/images/favicon.ico">
+    <link rel="shortcut icon" href="{{asset($gn->icon)}}">
 
     <!-- Bootstrap Css -->
     <link href="{{asset('assets/admin/')}}/css/bootstrap.min.css"  rel="stylesheet" type="text/css" />
@@ -39,19 +39,19 @@
                 <div class="navbar-brand-box">
                     <a href="index.html" class="logo logo-dark">
                                 <span class="logo-sm">
-                                    <img src="{{asset('assets/admin/')}}/images/logo-sm.png" alt="" height="22">
+                                    <img src="{{asset($gn->logo)}}" alt="" height="22">
                                 </span>
                         <span class="logo-lg">
-                                    <img src="{{asset('assets/admin/')}}/images/logo-dark.png" alt="" height="20">
+                                    <img src="{{asset($gn->logo)}}" alt="" height="20">
                                 </span>
                     </a>
 
                     <a href="index.html" class="logo logo-light">
                                 <span class="logo-sm">
-                                    <img src="{{asset('assets/admin/')}}/images/logo-sm.png" alt="" height="22">
+                                    <img src="{{asset($gn->logo)}}" alt="" height="22">
                                 </span>
                         <span class="logo-lg">
-                                    <img src="{{asset('assets/admin/')}}/images/logo-light.png" alt="" height="20">
+                                    <img src="{{asset($gn->logo)}}" alt="" height="20">
                                 </span>
                     </a>
                 </div>
@@ -99,10 +99,10 @@
         <div class="navbar-brand-box">
             <a href="index.html" class="logo logo-dark">
                         <span class="logo-sm">
-                            <img src="{{asset('assets/admin/')}}/images/logo-sm.png" alt="" height="22">
+                            <img src="{{asset($gn->logo)}}" alt="" height="22">
                         </span>
                 <span class="logo-lg">
-                            <img src="{{asset('assets/admin/')}}/images/logo-dark.png" alt="" height="20">
+                            <img src="{{asset($gn->logo)}}" alt="" style="width: 175px;height: 52px;">
                         </span>
             </a>
 

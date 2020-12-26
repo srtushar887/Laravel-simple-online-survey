@@ -24,21 +24,29 @@
 
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="validationCustom01">Title</label>
+                                    <label for="validationCustom01">Post Title</label>
                                     <input type="text" name="title" class="form-control">
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="validationCustom01">Post URL Link</label>
+                                    <input type="text" name="url" class="form-control">
 
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="validationCustom01">Image</label>
+                                    <label for="validationCustom01">Post Image (if have)</label>
                                     <input type="file" name="image" class="form-control">
 
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="validationCustom01">Desctiption</label>
+                                    <label for="validationCustom01">Description</label>
                                     <textarea type="text" cols="5" rows="5" class="form-control" name="question" ></textarea>
 
                                 </div>
@@ -53,3 +61,6 @@
 
     </div>
 @endsection
+
+
+

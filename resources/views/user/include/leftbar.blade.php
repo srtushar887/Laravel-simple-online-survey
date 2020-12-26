@@ -4,7 +4,7 @@
             @if (!empty(Auth::user()->profile_image) && file_exists(Auth::user()->profile_image))
                 <img src="{{asset(Auth::user()->profile_image)}}" style="height: 150px;width: 150px" class="img-fluid mt-2 rounded-circle" alt="Responsive image">
             @else
-                <img src="https://www.slj.com/webfiles/1604461841106/images/default-user.png" style="height: 150px;width: 150px" class="img-fluid mt-2 rounded-circle" alt="Responsive image">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc4gAuboBQ2Y-6kl84wtIoK8e18cFsmxvIag&usqp=CAU" style="height: 150px;width: 150px" class="img-fluid mt-2 rounded-circle" alt="Responsive image">
             @endif
 
             <h5 class="font-weight-bold text-dark mb-1 mt-4">{{Auth::user()->name}}</h5>

@@ -65,6 +65,12 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
         //transfer money
         Route::get('/transfer-money', [\App\Http\Controllers\User\UserTransactionController::class,'transfer_money'])->name('user.transfer.money');
         Route::post('/transfer-money-save', [\App\Http\Controllers\User\UserTransactionController::class,'transfer_money_save'])->name('user.transfermoney.save');
+
+        //history
+        Route::get('/earning-history', [\App\Http\Controllers\User\UserTransactionController::class,'earning_history'])->name('user.earning.history');
+        Route::get('/withdraw-history', [\App\Http\Controllers\User\UserTransactionController::class,'withdraw_history'])->name('user.withdraw.history');
+        Route::get('/send-money-history', [\App\Http\Controllers\User\UserTransactionController::class,'send_money_history'])->name('user.sendmoney.history');
+        Route::get('/mobile-recharge-history', [\App\Http\Controllers\User\UserTransactionController::class,'mobile_recharge_history'])->name('user.mobile.recharge.history');
     });
 });
 

@@ -30,6 +30,13 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
+                                    <label for="validationCustom01">Post URL Link</label>
+                                    <input type="text" name="url" class="form-control" value="{{$survey->url}}">
+
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
                                     <label for="validationCustom01">Image</label>
                                     <br>
                                     <img src="{{asset($survey->image)}}" style="height: 100px;width: 100px">

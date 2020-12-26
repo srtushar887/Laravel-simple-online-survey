@@ -28,6 +28,7 @@
 
                             <thead>
                             <tr>
+                                <th>ID</th>
                                 <th>User Name</th>
                                 <th>Amount</th>
                                 <th>Status</th>
@@ -98,6 +99,7 @@
                     "url": "{{route('admin.get.withdrawmoney')}}"
                 },
                 columns: [
+                    { data: 'withdraw_id', name: 'withdraw_id',class: 'text-center', class : 'text-center' },
                     { data: 'users.name', name: 'users.name',class: 'text-center', class : 'text-center' },
                     { data: 'amount', name: 'amount',class: 'text-center', class : 'text-center' },
                     {

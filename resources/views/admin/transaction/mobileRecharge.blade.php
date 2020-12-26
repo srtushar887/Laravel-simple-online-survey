@@ -28,6 +28,7 @@
 
                             <thead>
                             <tr>
+                                <th>ID</th>
                                 <th>User Name</th>
                                 <th>Phone Number</th>
                                 <th>Amount</th>
@@ -99,6 +100,7 @@
                     "url": "{{route('admin.get.mobile.recharge')}}"
                 },
                 columns: [
+                    { data: 'recharge_id', name: 'recharge_id',class: 'text-center', class : 'text-left' },
                     { data: 'users.name', name: 'users.name',class: 'text-center', class : 'text-left' },
                     { data: 'phone_number', name: 'phone_number',class: 'text-center', class : 'text-left' },
                     { data: 'amount', name: 'amount',class: 'text-center', class : 'text-left' },

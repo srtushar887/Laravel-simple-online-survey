@@ -28,31 +28,27 @@
             <h6 class="m-0">Your Recent Post
             </h6>
         </div>
+        <?php
+            $user_recent_post = \App\Models\survey_question::where('user_type',2)->where('user_id',Auth::user()->id)->take(2)->get();
+        ?>
         <div class="box-body p-3">
-            <a href="job-profile.html">
-                <div class="shadow-sm border rounded bg-white job-item mb-3">
-                    <div class="d-flex align-items-center p-3 job-item-header">
-                        <div class="overflow-hidden mr-2">
-                            <h6 class="font-weight-bold text-dark mb-0 text-truncate">Product Director</h6>
-                            <div class="text-truncate text-primary">Spotify Inc.</div>
-                            <div class="small text-gray-500"><i class="feather-map-pin"></i> India, Punjab</div>
+            @foreach ($user_recent_post as $rpost)
+                <a href="job-profile.html">
+                    <div class="shadow-sm border rounded bg-white job-item mb-3">
+                        <div class="d-flex align-items-center p-3 job-item-header">
+                            <div class="overflow-hidden mr-2">
+                                <div class="text-truncate text-primary">{{substr($rpost->title,0,20)}}</div>
+
+                            </div>
                         </div>
-                        <img class="img-fluid ml-auto" src="{{asset('assets/frontend/')}}/img/l3.png" alt="">
-                    </div>
-                    <div class="d-flex align-items-center p-3 border-top border-bottom job-item-body">
-                        <div class="overlap-rounded-circle">
-                            <img class="rounded-circle shadow-sm" data-toggle="tooltip" data-placement="top" title="" src="{{asset('assets/frontend/')}}/img/p9.png" alt="" data-original-title="Sophia Lee">
-                            <img class="rounded-circle shadow-sm" data-toggle="tooltip" data-placement="top" title="" src="{{asset('assets/frontend/')}}/img/p10.png" alt="" data-original-title="John Doe">
-                            <img class="rounded-circle shadow-sm" data-toggle="tooltip" data-placement="top" title="" src="{{asset('assets/frontend/')}}/img/p11.png" alt="" data-original-title="Julia Cox">
-                            <img class="rounded-circle shadow-sm" data-toggle="tooltip" data-placement="top" title="" src="{{asset('assets/frontend/')}}/img/p12.png" alt="" data-original-title="Robert Cook">
+                        <div class="p-3 job-item-footer">
+                            <small class="text-gray-500"><i class="feather-clock"></i> {{$rpost->created_at->diffforhumans()}}</small>
                         </div>
-                        <span class="font-weight-bold text-muted">18 connections</span>
                     </div>
-                    <div class="p-3 job-item-footer">
-                        <small class="text-gray-500"><i class="feather-clock"></i> Posted 3 Days ago</small>
-                    </div>
-                </div>
-            </a>
+                </a>
+            @endforeach
+
+
         </div>
     </div>
 </aside>
