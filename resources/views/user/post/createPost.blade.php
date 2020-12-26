@@ -4,7 +4,7 @@
         <div class="border rounded bg-white mb-3">
             <div class="box-title border-bottom p-3">
                 <h6 class="m-0">Create Post</h6>
-                <p class="mb-0 mt-0 small text-danger"> PER POST 20 AMOUNT WILL BE DEDUCTED FROM YOUR MAIN BALANCE .
+                <p class="mb-0 mt-0 small text-danger"> PER POST {{$gn->site_currency}}{{$gn->create_post}} WILL BE DEDUCTED FROM YOUR MAIN BALANCE .
                 </p>
             </div>
             <div class="box-body p-3">

@@ -3,15 +3,23 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use App\Models\general_setting;
+use App\Models\survey_question;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use Intervention\Image\Facades\Image;
 
 class AdminController extends Controller
 {
     public function index()
     {
-        return view('admin.index');
+        $users = User::count();
+        $survey_question = survey_question::count();
+        return view('admin.index',compact('users','survey_question'));
     }
 
 
@@ -50,6 +58,7 @@ class AdminController extends Controller
         $gen->site_currency = $request->site_currency;
         $gen->per_post_money = floatval($request->per_post_money);
         $gen->per_like_money = floatval($request->per_like_money);
+        $gen->create_post = floatval($request->create_post);
         $gen->transfer_amount_percentage = $request->transfer_amount_percentage;
         $gen->site_address = $request->site_address;
         $gen->save();
@@ -58,6 +67,72 @@ class AdminController extends Controller
 
 
     }
+
+
+
+    public function profile()
+    {
+        return view('admin.page.profile');
+    }
+
+
+    public function profile_update(Request $request)
+    {
+        $profile = Admin::where('id',Auth::user()->id)->first();
+        if($request->hasFile('profile_image')){
+            @unlink($profile->profile_image);
+            $image = $request->file('profile_image');
+            $imageName = time().'.'."png";
+            $directory = 'assets/admin/images/logo/';
+            $imgUrl  = $directory.$imageName;
+            Image::make($image)->save($imgUrl);
+            $profile->profile_image = $imgUrl;
+        }
+
+
+        $profile->name = $request->name;
+        $profile->email = $request->email;
+        $profile->save();
+
+        return back()->with('success','Profile Successfully Updated');
+
+
+
+
+
+    }
+
+
+
+    public function password_change()
+    {
+        return view('admin.page.passwordChange');
+    }
+
+
+    public function password_change_update(Request $request)
+    {
+        $new_pass = $request->npass;
+        $con_pass = $request->cpass;
+
+        if ($new_pass != $con_pass) {
+            return back()->with('alert','Password not match');
+        }else{
+            $user_pass = Admin::where('id',Auth::user()->id)->first();
+            $user_pass->password = Hash::make($new_pass);
+            $user_pass->save();
+
+//            Auth::guard('web')->logout();
+//            Session::flush();
+//            \auth()->guard('web')->login($user_pass);
+            return back()->with('success','Password Successfully Changed');
+        }
+    }
+
+
+
+
+
 
 
 }

@@ -87,6 +87,14 @@ Route::group(['middleware' => ['auth:admin']], function() {
     Route::prefix('admin')->group(function() {
         Route::get('/', [\App\Http\Controllers\Admin\AdminController::class,'index'])->name('admin.dashboard');
 
+        //admin profile
+        Route::get('/profile', [\App\Http\Controllers\Admin\AdminController::class,'profile'])->name('admin.profile');
+        Route::post('/profile-update', [\App\Http\Controllers\Admin\AdminController::class,'profile_update'])->name('admin.profile.update');
+
+        //password
+        Route::get('/password-change', [\App\Http\Controllers\Admin\AdminController::class,'password_change'])->name('admin.password');
+        Route::post('/password-change-update', [\App\Http\Controllers\Admin\AdminController::class,'password_change_update'])->name('admin.password.update');
+
         //general setting
         Route::get('/general-setting', [\App\Http\Controllers\Admin\AdminController::class,'general_settings'])->name('admin.general.settings');
         Route::post('/general-setting-update', [\App\Http\Controllers\Admin\AdminController::class,'general_settings_update'])->name('admin.general.settings.update');

@@ -37,7 +37,7 @@
             <div class="d-flex">
                 <!-- LOGO -->
                 <div class="navbar-brand-box">
-                    <a href="index.html" class="logo logo-dark">
+                    <a href="{{route('admin.dashboard')}}" class="logo logo-dark">
                                 <span class="logo-sm">
                                     <img src="{{asset($gn->logo)}}" alt="" height="22">
                                 </span>
@@ -46,7 +46,7 @@
                                 </span>
                     </a>
 
-                    <a href="index.html" class="logo logo-light">
+                    <a href="{{route('admin.dashboard')}}" class="logo logo-light">
                                 <span class="logo-sm">
                                     <img src="{{asset($gn->logo)}}" alt="" height="22">
                                 </span>
@@ -72,17 +72,19 @@
                 <div class="dropdown d-inline-block">
                     <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img class="rounded-circle header-profile-user" src="{{asset('assets/admin/')}}/images/users/avatar-4.jpg"
-                             alt="Header Avatar">
+                        @if (Auth::user()->profile_image && file_exists(Auth::user()->profile_image))
+                            <img class="rounded-circle header-profile-user" src="{{asset(Auth::user()->profile_image)}}" alt="Header Avatar" style="height: 44px;">
+                        @else
+                            <img class="img-profile rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc4gAuboBQ2Y-6kl84wtIoK8e18cFsmxvIag&usqp=CAU" style="height: 44px;">
+                        @endif
+
                         <span class="d-none d-xl-inline-block ml-1 font-weight-medium font-size-15">{{Auth::user()->name}}</span>
                         <i class="uil-angle-down d-none d-xl-inline-block font-size-15"></i>
                     </button>
                     <div class="dropdown-menu dropdown-menu-right">
                         <!-- item-->
-                        <a class="dropdown-item" href="#"><i class="uil uil-user-circle font-size-18 align-middle text-muted mr-1"></i> <span class="align-middle">View Profile</span></a>
-                        <a class="dropdown-item" href="#"><i class="uil uil-wallet font-size-18 align-middle mr-1 text-muted"></i> <span class="align-middle">My Wallet</span></a>
-                        <a class="dropdown-item d-block" href="#"><i class="uil uil-cog font-size-18 align-middle mr-1 text-muted"></i> <span class="align-middle">Settings</span> <span class="badge badge-soft-success badge-pill mt-1 ml-2">03</span></a>
-                        <a class="dropdown-item" href="#"><i class="uil uil-lock-alt font-size-18 align-middle mr-1 text-muted"></i> <span class="align-middle">Lock screen</span></a>
+                        <a class="dropdown-item" href="{{route('admin.profile')}}"><i class="uil uil-user-circle font-size-18 align-middle text-muted mr-1"></i> <span class="align-middle">View Profile</span></a>
+                        <a class="dropdown-item" href="{{route('admin.password')}}"><i class="uil uil-lock-alt font-size-18 align-middle mr-1 text-muted"></i> <span class="align-middle">Lock screen</span></a>
                         <a class="dropdown-item" href="#"><i class="uil uil-sign-out-alt font-size-18 align-middle mr-1 text-muted"></i> <span class="align-middle">Sign out</span></a>
                     </div>
                 </div>
