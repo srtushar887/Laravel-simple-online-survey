@@ -3,14 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="64ee45a7-d400-464e-b06e-dd73e9eede32" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/CustomLoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/CustomLoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/User/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/User/UserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/User/UserPostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/User/UserPostController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/page/generalSettings.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/page/generalSettings.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/adminLogin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/adminLogin.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/user.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/user.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/livewire/user/userpost.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/user/userpost.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/include/leftbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/include/leftbar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/include/rightbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/include/rightbar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/user/post/createPost.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/post/createPost.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/post/postDetails.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/post/postDetails.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -189,7 +194,10 @@
       <workItem from="1608948896388" duration="28000" />
       <workItem from="1608958098928" duration="3573000" />
       <workItem from="1608962101114" duration="3924000" />
-      <workItem from="1608967244977" duration="24856000" />
+      <workItem from="1608967244977" duration="27547000" />
+      <workItem from="1609050413136" duration="1034000" />
+      <workItem from="1609065091796" duration="275000" />
+      <workItem from="1609089015032" duration="6836000" />
     </task>
     <servers />
   </component>
@@ -206,6 +214,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

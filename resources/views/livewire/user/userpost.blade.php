@@ -17,7 +17,26 @@
     <div class="box mb-3 shadow-sm border rounded bg-white osahan-post postdiv">
         <div class="p-3 d-flex align-items-center border-bottom osahan-post-header">
             <div class="dropdown-list-image mr-3">
-                <img class="rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc4gAuboBQ2Y-6kl84wtIoK8e18cFsmxvIag&usqp=CAU" alt="">
+                @if ($post->user_type == 1)
+                    <?php
+                        $admin = \App\Models\Admin::where('id',$post->user_id)->first();
+                    ?>
+                    @if (!empty($admin->profile_image) && file_exists($admin->profile_image))
+                            <img class="rounded-circle" src="{{asset($admin->profile_image)}}" alt="">
+                        @else
+                            <img class="rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc4gAuboBQ2Y-6kl84wtIoK8e18cFsmxvIag&usqp=CAU" alt="">
+                    @endif
+                @else
+                    <?php
+                    $user = \App\Models\User::where('id',$post->user_id)->first();
+                    ?>
+                    @if (!empty($user->profile_image) && file_exists($user->profile_image))
+                        <img class="rounded-circle" src="{{asset($user->profile_image)}}" alt="">
+                    @else
+                        <img class="rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc4gAuboBQ2Y-6kl84wtIoK8e18cFsmxvIag&usqp=CAU" alt="">
+                    @endif
+                @endif
+
             </div>
             <div class="font-weight-bold">
                 @if ($post->user_type == 1)

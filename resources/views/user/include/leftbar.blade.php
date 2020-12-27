@@ -27,4 +27,19 @@
         </div>
     </div>
 
+    <div class="box mb-3 shadow-sm rounded bg-white view-box overflow-hidden">
+        <div class="box-title border-bottom p-3">
+            <h6 class="m-0">My Referral ID : 12345678</h6>
+        </div>
+        <div class="box-title border-bottom p-3">
+            <h6 class="m-0">Referral URL</h6>
+            <?php
+
+            ?>
+            <input type="text" class="form-control" id="myInput" value="{{route('referralurl',Auth::user()->my_ref_id)}}" readonly>
+            <br>
+            <button class="btn btn-success btn-sm btn-block" onclick="myFunction()">COPY REFERRAL URL</button>
+        </div>
+    </div>
+
 </aside>

@@ -28,7 +28,7 @@
 
 <nav class="navbar navbar-expand navbar-dark bg-dark osahan-nav-top p-0">
     <div class="container" style="max-width: 100%">
-        <a class="navbar-brand mr-2" href="{{route('dashboard')}}"><img src="{{asset($gn->logo)}}" style="width: 50px;" alt="">
+        <a class="navbar-brand mr-2" href="{{route('dashboard')}}"><img src="{{asset($gn->logo)}}" style="width: 100px;" alt="">
         </a>
 
         <ul class="navbar-nav ml-auto d-flex align-items-center">
@@ -118,7 +118,19 @@
 
 @yield('js')
 
+
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script>
+    function myFunction() {
+        var copyText = document.getElementById("myInput");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999)
+        document.execCommand("copy");
+        alert("Copied the text: " + copyText.value);
+    }
+</script>
+
 @include('layouts.message')
 </body>
 

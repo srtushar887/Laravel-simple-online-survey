@@ -14,13 +14,24 @@
                         <div class="col-sm-12 mb-2">
                             <div class="js-form-message">
                                 <label id="nameLabel" class="form-label">
-                                    Title
+                                    Post Title
                                     <span class="text-danger">*</span>
                                 </label>
                                 <div class="form-group">
                                     <input type="text" class="form-control" name="title" placeholder="Post Title" aria-label="Enter your name" required="" aria-describedby="nameLabel" data-msg="Please enter your name." data-error-class="u-has-error" data-success-class="u-has-success">
                                 </div>
                             </div>
+
+                            <div class="js-form-message">
+                                <label id="nameLabel" class="form-label">
+                                    Post URL
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="url" placeholder="Post URL" aria-label="Enter your name" required="" aria-describedby="nameLabel" data-msg="Please enter your name." data-error-class="u-has-error" data-success-class="u-has-success">
+                                </div>
+                            </div>
+
                             <div class="js-form-message">
                                 <label id="nameLabel" class="form-label">
                                     Post Image (if have)

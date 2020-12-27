@@ -33,12 +33,11 @@
         ?>
         <div class="box-body p-3">
             @foreach ($user_recent_post as $rpost)
-                <a href="job-profile.html">
+                <a href="{{route('user.post.details',$rpost->id)}}">
                     <div class="shadow-sm border rounded bg-white job-item mb-3">
                         <div class="d-flex align-items-center p-3 job-item-header">
                             <div class="overflow-hidden mr-2">
                                 <div class="text-truncate text-primary">{{substr($rpost->title,0,20)}}</div>
-
                             </div>
                         </div>
                         <div class="p-3 job-item-footer">

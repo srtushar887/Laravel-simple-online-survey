@@ -26,41 +26,59 @@
             <div class="col-md-4 mx-auto">
                 <div class="osahan-login py-4">
                     <div class="text-center mb-4">
-                        <a href="{{route('login')}}"><img src="{{asset($gn->logo)}}" style="width: 300px;height: 66px;" alt=""></a>
+                        <a href="#"><img src="{{asset($gn->logo)}}" style="width: 300px;height: 66px;" alt=""></a>
                         <h5 class="font-weight-bold mt-3">Welcome Back</h5>
-                        <p class="text-muted">Sign in to stay updated on your professional world.</p>
+                        <p class="text-muted">Don't miss your next opportunity. Sign in to stay updated on your professional world.</p>
                     </div>
-                    <form action="{{route('user.login')}}" method="post">
+                    <form action="{{route('user.custom.register')}}" method="post">
                         @csrf
                         <div class="form-group">
-                            <label class="mb-1">Email or Phone</label>
+                            <label class="mb-1">Ref ID (if have)</label>
                             <div class="position-relative icon-form-control">
                                 <i class="feather-user position-absolute"></i>
-                                <input type="email" name="email" class="form-control">
+                                <input type="text" class="form-control" name="ref_id" value="{{$user_ref}}" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="mb-1">Full Name</label>
+                            <div class="position-relative icon-form-control">
+                                <i class="feather-user position-absolute"></i>
+                                <input type="text" class="form-control" name="name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="mb-1">Email</label>
+                            <div class="position-relative icon-form-control">
+                                <i class="feather-user position-absolute"></i>
+                                <input type="email" class="form-control" name="email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="mb-1">Phone</label>
+                            <div class="position-relative icon-form-control">
+                                <i class="feather-user position-absolute"></i>
+                                <input type="text" class="form-control" name="phone">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="mb-1">Password</label>
                             <div class="position-relative icon-form-control">
                                 <i class="feather-unlock position-absolute"></i>
-                                <input type="password" name="password" class="form-control">
+                                <input type="password" class="form-control" name="password">
                             </div>
                         </div>
-                        <button class="btn btn-primary btn-block text-uppercase" type="submit"> Sign in </button>
-                        <div class="text-center mt-3 border-bottom pb-3">
-                            <p class="small text-muted">Or login with</p>
-                            <div class="row">
-                                <div class="col-6">
-                                    <button type="button" class="btn btn-sm btn-outline-instagram btn-block"><i class="feather-instagram"></i> Instagram</button>
-                                </div>
-                                <div class="col-6">
-                                    <button type="button" class="btn btn-sm btn-outline-linkedin btn-block"><i class="feather-linkedin"></i> Linkedin</button>
-                                </div>
+                        <div class="form-group">
+                            <label class="mb-1">Confirm Password</label>
+                            <div class="position-relative icon-form-control">
+                                <i class="feather-unlock position-absolute"></i>
+                                <input type="password" class="form-control" name="confirm_password">
                             </div>
                         </div>
+                        <button class="btn btn-primary btn-block text-uppercase" type="submit"> Sign Up </button>
+
                         <div class="py-3 d-flex align-item-center">
                             <a href="forgot-password.html">Forgot password?</a>
-                            <span class="ml-auto"> New an account? <a class="font-weight-bold" href="{{route('register')}}">Join now</a></span>
+                            <span class="ml-auto"> Already have an account? <a class="font-weight-bold" href="{{route('login')}}">Sign In</a></span>
                         </div>
                     </form>
                 </div>

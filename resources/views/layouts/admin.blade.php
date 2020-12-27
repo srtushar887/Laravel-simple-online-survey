@@ -73,9 +73,9 @@
                     <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         @if (Auth::user()->profile_image && file_exists(Auth::user()->profile_image))
-                            <img class="rounded-circle header-profile-user" src="{{asset(Auth::user()->profile_image)}}" alt="Header Avatar" style="height: 44px;">
+                            <img class="rounded-circle header-profile-user" src="{{asset(Auth::user()->profile_image)}}" alt="Header Avatar" style="height: 44px;width: 44px;">
                         @else
-                            <img class="img-profile rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc4gAuboBQ2Y-6kl84wtIoK8e18cFsmxvIag&usqp=CAU" style="height: 44px;">
+                            <img class="img-profile rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc4gAuboBQ2Y-6kl84wtIoK8e18cFsmxvIag&usqp=CAU" style="height: 44px;width: 44px;">
                         @endif
 
                         <span class="d-none d-xl-inline-block ml-1 font-weight-medium font-size-15">{{Auth::user()->name}}</span>

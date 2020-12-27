@@ -10,6 +10,7 @@ use App\Models\survey_question;
 use App\Models\transaction;
 use App\Models\User;
 use App\Models\user_earning;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -42,6 +43,7 @@ class UserPostController extends Controller
             $new_post->user_type = 2;
             $new_post->user_id = Auth::user()->id;
             $new_post->title = $request->title;
+            $new_post->url = $request->url;
             $new_post->question = $request->question;
             $new_post->save();
 
@@ -109,7 +111,18 @@ class UserPostController extends Controller
                         $user_tran->amount = $gen->per_like_money;
                         $user_tran->message = "Post Like";
                         $user_tran->type = 1;
+                        $user_tran->earn_date = Carbon::now()->format('Y-m-d');
                         $user_tran->save();
+
+                        $upline_user = User::where('my_ref_id',Auth::user()->ref_id)->first();
+
+                        if ($upline_user) {
+                            $user_upline = User::where('id',$upline_user->id)->first();
+
+                            $commision = ($gen->per_like_money * 5) /100;
+                            $user_upline->balance = $user_upline->balance + $commision;
+                            $user_upline->save();
+                        }
 
                         return back()->with('success','You Liked this post');
                     }
@@ -135,7 +148,19 @@ class UserPostController extends Controller
                     $user_tran->amount = $gen->per_like_money;
                     $user_tran->message = "Post Like";
                     $user_tran->type = 1;
+                    $user_tran->earn_date = Carbon::now()->format('Y-m-d');
                     $user_tran->save();
+
+
+                    $upline_user = User::where('my_ref_id',Auth::user()->ref_id)->first();
+
+                    if ($upline_user) {
+                        $user_upline = User::where('id',$upline_user->id)->first();
+
+                        $commision = ($gen->per_like_money * 5) /100;
+                        $user_upline->balance = $user_upline->balance + $commision;
+                        $user_upline->save();
+                    }
 
                     return back()->with('success','You Liked this post');
                 }
@@ -189,6 +214,16 @@ class UserPostController extends Controller
                     $user_tran->type = 2;
                     $user_tran->save();
 
+
+                    $upline_user = User::where('my_ref_id',Auth::user()->ref_id)->first();
+
+                    if ($upline_user) {
+                        $user_upline = User::where('id',$upline_user->id)->first();
+                        $commision = ($gen->per_post_money * 5) /100;
+                        $user_upline->balance = $user_upline->balance + $commision;
+                        $user_upline->save();
+                    }
+
                     return back()->with('success','Comment Successfully Created');
                 }
 
@@ -217,7 +252,18 @@ class UserPostController extends Controller
                 $user_tran->amount = $gen->per_post_money;
                 $user_tran->message = "Post Comment";
                 $user_tran->type = 2;
+                $user_tran->earn_date = Carbon::now()->format('Y-m-d');
                 $user_tran->save();
+
+
+                $upline_user = User::where('my_ref_id',Auth::user()->ref_id)->first();
+
+                if ($upline_user) {
+                    $user_upline = User::where('id',$upline_user->id)->first();
+                    $commision = ($gen->per_post_money * 5) /100;
+                    $user_upline->balance = $user_upline->balance + $commision;
+                    $user_upline->save();
+                }
 
                 return back()->with('success','Comment Successfully Created');
             }

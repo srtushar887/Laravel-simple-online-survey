@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\referral_earning;
 use App\Models\survey_question;
 use App\Models\User;
+use App\Models\user_earning;
 use App\Models\user_pin;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -17,6 +19,13 @@ class UserController extends Controller
 {
     public function index()
     {
+
+        $user_today_exist_data = referral_earning::where('earning_date',Carbon::now()->format('Y-m-d'))->count();
+
+        if ($user_today_exist_data == 0) {
+            $downline_user = User::where('ref_id',Auth::user()->ref_id)->get();
+
+        }
 
         return view('user.index');
     }

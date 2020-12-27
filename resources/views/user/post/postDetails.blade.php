@@ -3,7 +3,10 @@
     <main class="col col-xl-6 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
         <div class="col-lg-12 col-md-12">
             <div class="blog-card padding-card box shadow-sm rounded bg-white mb-3 border-0">
-                <img class="card-img-top" src="{{asset($post_details->image)}}" style="height: 500px;" alt="Card image cap">
+                @if (!empty($post_details->image) && file_exists($post_details->image))
+                    <img class="card-img-top" src="{{asset($post_details->image)}}" style="height: 500px;" alt="Card image cap">
+                @endif
+
                 <div class="card-body">
                     <?php
                         $comment_count = \App\Models\post_comment::where('post_id',$post_details->id)->count();

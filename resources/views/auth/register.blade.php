@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" type="image/png" href="img/fav.png">
-    <title>Osahanin - Job Portal & Social Network HTML Template</title>
+    <link rel="icon" type="image/png" href="{{asset($gn->icon)}}">
+    <title>{{$gn->site_name}}</title>
 
     <link rel="stylesheet" type="text/css" href="{{asset('assets/frontend/')}}/vendor/slick/slick.min.css" />
     <link rel="stylesheet" type="text/css" href="{{asset('assets/frontend/')}}/vendor/slick/slick-theme.min.css" />
@@ -26,7 +26,7 @@
             <div class="col-md-4 mx-auto">
                 <div class="osahan-login py-4">
                     <div class="text-center mb-4">
-                        <a href="index.html"><img src="{{asset('assets/frontend/')}}/img/logo.svg" alt=""></a>
+                        <a href="{{route('register')}}"><img src="{{asset('assets/frontend/')}}/img/logo.svg" alt=""></a>
                         <h5 class="font-weight-bold mt-3">Welcome Back</h5>
                         <p class="text-muted">Don't miss your next opportunity. Sign in to stay updated on your professional world.</p>
                     </div>

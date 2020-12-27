@@ -6,12 +6,12 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Log In | Minible - Responsive Bootstrap 4 Admin Dashboard</title>
+    <title>{{$gn->site_name}} | Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{asset('assets/admin/')}}/images/favicon.ico">
+    <link rel="shortcut icon" href="{{asset($gn->icon)}}">
 
     <!-- Bootstrap Css -->
     <link href="{{asset('assets/admin/')}}/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
@@ -32,8 +32,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="text-center">
-                    <a href="index.html" class="mb-5 d-block auth-logo">
-                        <img src="{{asset('assets/admin/')}}/images/logo-dark.png" alt="" height="22" class="logo logo-dark">
+                    <a href="{{route('admin.login')}}" class="mb-5 d-block auth-logo">
+                        <img src="{{asset($gn->logo)}}" alt="" style="width: 25%;height: 66px;" class="logo logo-dark">
                         <img src="{{asset('assets/admin/')}}/images/logo-light.png" alt="" height="22" class="logo logo-light">
                     </a>
                 </div>
@@ -69,10 +69,6 @@
                                 <div class="mt-3 text-right">
                                     <button class="btn btn-primary w-sm waves-effect waves-light" type="submit">Log In</button>
                                 </div>
-
-
-
-
                             </form>
                         </div>
 
@@ -80,7 +76,10 @@
                 </div>
 
                 <div class="mt-5 text-center">
-                    <p>© 2020 Minible. DEVELOPED BY<i class="mdi mdi-heart text-danger"></i> by Themesbrand</p>
+                    <?php
+                        $date = \Carbon\Carbon::now()->format('Y');
+                    ?>
+                    <p>© {{$date}} {{$gn->site_name}}. DEVELOPED BY <i class="fas fa-heart"></i> SR TUSHER</p>
                 </div>
 
             </div>
