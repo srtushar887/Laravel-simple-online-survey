@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\general_setting;
 use App\Models\referral_earning;
 use App\Models\survey_question;
 use App\Models\User;
@@ -49,6 +50,14 @@ class UserController extends Controller
             $user->account_type = 2;
             $user->save();
 
+            $gen = general_setting::first();
+            $user_ref = User::where('my_ref_id',Auth::user()->ref_id)->first();
+
+            if ($user_ref) {
+                $user_ref->balance = $user_ref->balance + $gen->active_commission;
+                $user_ref->total_income = $user_ref->total_income + $gen->active_commission;
+                $user_ref->save();
+            }
             return back()->with('success','Account Successfully Active');
 
         }else{
@@ -114,6 +123,14 @@ class UserController extends Controller
         }
 
     }
+
+
+    public function referral_user()
+    {
+        $ref_users = User::where('ref_id',Auth::user()->my_ref_id)->paginate(10);
+        return view('user.transaction.referralUser',compact('ref_users'));
+    }
+
 
 
 

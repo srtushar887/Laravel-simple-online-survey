@@ -59,6 +59,7 @@ class AdminController extends Controller
         $gen->per_post_money = floatval($request->per_post_money);
         $gen->per_like_money = floatval($request->per_like_money);
         $gen->create_post = floatval($request->create_post);
+        $gen->active_commission = floatval($request->active_commission);
         $gen->transfer_amount_percentage = $request->transfer_amount_percentage;
         $gen->site_address = $request->site_address;
         $gen->save();

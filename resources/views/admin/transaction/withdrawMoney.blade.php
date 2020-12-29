@@ -31,6 +31,8 @@
                                 <th>ID</th>
                                 <th>User Name</th>
                                 <th>Amount</th>
+                                <th>Payment Type</th>
+                                <th>Address</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -102,6 +104,24 @@
                     { data: 'withdraw_id', name: 'withdraw_id',class: 'text-center', class : 'text-center' },
                     { data: 'users.name', name: 'users.name',class: 'text-center', class : 'text-center' },
                     { data: 'amount', name: 'amount',class: 'text-center', class : 'text-center' },
+                    {
+                        data: 'payment_type',class : 'text-center',
+                        render: function(data) {
+                            if(data == 1) {
+                                return "<span class='label label-info label-mini text-center'>Paypal</span>";
+                            }else if (data == 2){
+                                return "<span class='label label-info label-mini text-center'>Perfect Money</span>";
+                            }else if (data == 3){
+                                return "<span class='label label-info label-mini text-center'>Bank</span>";
+                            }
+                            else {
+                                return "<span class='label label-info label-mini text-center'>Not Set Yet</span>";
+                            }
+
+                        },
+                        defaultContent: '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0okZSQTV10ebVN9GwLfr45wbCB9tyUK_oFjmRrP9Uo000e9sU" alt="" img style="width:100%; height:100px">'
+                    },
+                    { data: 'address', name: 'address',class: 'text-center', class : 'text-center' },
                     {
                         data: 'status',class : 'text-center',
                         render: function(data) {

@@ -43,6 +43,10 @@
                 <a class="nav-link" href="{{route('user.withdraw.money')}}"><i class="fas fa-money-check-alt" style="padding: 5px;"></i><span class="d-none d-lg-inline">Withdraw Money</span></a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="{{route('user.referral.user')}}"><i class="fas fa-house-user" style="padding: 5px;"></i><span class="d-none d-lg-inline">Referral User</span></a>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link" href="{{route('user.transfer.money')}}"><i class="fas fa-money-bill-wave" style="padding: 5px;"></i><span class="d-none d-lg-inline">Transfer Money</span></a>
             </li>
             <li class="nav-item dropdown mr-2">

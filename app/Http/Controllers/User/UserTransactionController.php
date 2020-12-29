@@ -78,6 +78,8 @@ class UserTransactionController extends Controller
             $new_with->withdraw_id = $id;
             $new_with->user_id = Auth::user()->id;
             $new_with->amount = $request->amount;
+            $new_with->payment_type = $request->payment_type;
+            $new_with->address = $request->address;
             $new_with->status = 1;
             $new_with->save();
 

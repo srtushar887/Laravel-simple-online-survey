@@ -18,7 +18,7 @@
                 <p class="mb-0 text-black-50 small">Balance</p>
             </div>
             <div class="col-6 p-3">
-                <h6 class="font-weight-bold text-dark mb-1">{{$gn->site_currency}}{{Auth::user()->total_earning}}</h6>
+                <h6 class="font-weight-bold text-dark mb-1">{{$gn->site_currency}}{{Auth::user()->total_income}}</h6>
                 <p class="mb-0 text-black-50 small">Total Earning</p>
             </div>
         </div>

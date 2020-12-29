@@ -77,7 +77,7 @@
                         <button class="btn btn-primary btn-block text-uppercase" type="submit"> Sign Up </button>
 
                         <div class="py-3 d-flex align-item-center">
-                            <a href="forgot-password.html">Forgot password?</a>
+                            <a href="{{route('user.forgot.password')}}">Forgot password?</a>
                             <span class="ml-auto"> Already have an account? <a class="font-weight-bold" href="{{route('login')}}">Sign In</a></span>
                         </div>
                     </form>

@@ -100,6 +100,7 @@ class UserPostController extends Controller
                         $gen = general_setting::first();
                         $user_bal = User::where('id',Auth::user()->id)->first();
                         $user_bal->balance = $user_bal->balance + $gen->per_like_money;
+                        $user_bal->total_income = $user_bal->total_income + $gen->per_like_money;
                         $user_bal->save();
 
 
@@ -137,6 +138,7 @@ class UserPostController extends Controller
                     $gen = general_setting::first();
                     $user_bal = User::where('id',Auth::user()->id)->first();
                     $user_bal->balance = $user_bal->balance + $gen->per_like_money;
+                    $user_bal->total_income = $user_bal->total_income + $gen->per_like_money;
                     $user_bal->save();
 
 
@@ -201,6 +203,7 @@ class UserPostController extends Controller
                     $gen = general_setting::first();
                     $user_bal = User::where('id',Auth::user()->id)->first();
                     $user_bal->balance = $user_bal->balance + $gen->per_post_money;
+                    $user_bal->total_income = $user_bal->total_income + $gen->per_post_money;
                     $user_bal->save();
 
 
@@ -241,6 +244,7 @@ class UserPostController extends Controller
                 $gen = general_setting::first();
                 $user_bal = User::where('id',Auth::user()->id)->first();
                 $user_bal->balance = $user_bal->balance + $gen->per_post_money;
+                $user_bal->total_income = $user_bal->total_income + $gen->per_post_money;
                 $user_bal->save();
 
 

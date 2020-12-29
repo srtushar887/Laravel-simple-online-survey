@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Mail\AccountVeirifyMail;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class CustomLoginController extends Controller
 {
@@ -16,6 +19,7 @@ class CustomLoginController extends Controller
         $new_user->ref_id = $request->ref_id;
         $new_user->balance = 0.00;
         $new_user->total_earning = 0.00;
+        $new_user->total_income = 0.00;
         $new_user->name = $request->name;
         $new_user->email = $request->email;
         $new_user->phone = $request->phone;
@@ -34,13 +38,35 @@ class CustomLoginController extends Controller
         $user_balance->my_ref_id = $myrefid;
         $user_balance->save();
 
-        return redirect(route('login'));
+
+
+
+        $code = Str::random(5).$new_user->id.rand(1,9).Str::random(3);
+        $url = route('verify.account',$code);
+        $to = $new_user->email;
+
+        $user_code = User::where('id',$new_user->id)->first();
+        $user_code->verify_code = $code;
+        $user_code->save();
+
+        $msg = [
+            'code' => $url,
+        ];
+        Mail::to($to)->send(new AccountVeirifyMail($msg));
+
+
+
+
+        return redirect(route('login'))->with('reg_email_send','We have send a mail in your account . Please Verify your account');
 
     }
 
 
     public function custom_login(Request $request)
     {
+
+
+
         $this->validate($request,[
             'email' => 'required',
             'password' => 'required|min:8'
@@ -51,6 +77,10 @@ class CustomLoginController extends Controller
 
         return redirect()->back();
     }
+
+
+
+
 
 
 

@@ -21,6 +21,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [\App\Http\Controllers\FrontendController::class,'index'])->name('front');
 Route::get('/referral-join/{refid}', [\App\Http\Controllers\VisitorController::class,'referral_join'])->name('referralurl');
 
+//verify account
+Route::get('/verify-account/{code}', [\App\Http\Controllers\VisitorController::class,'verify_account'])->name('verify.account');
+
+//forgot password
+Route::get('/forgot-password', [\App\Http\Controllers\VisitorController::class,'forgot_password'])->name('user.forgot.password');
+Route::post('/reset-pass-send-link', [\App\Http\Controllers\VisitorController::class,'reset_pass_send_link'])->name('user.reset.pass.send.link');
+Route::get('/password-change/{code}', [\App\Http\Controllers\VisitorController::class,'reset_pass_verify'])->name('user.reset.pass.verify');
+Route::post('/change-password-change-save', [\App\Http\Controllers\VisitorController::class,'reset_pass_chnage_save'])->name('user.reset.pass.change.save');
+
 //Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //    return view('dashboard');
 //})->name('dashboard');
@@ -30,10 +39,12 @@ Route::get('/referral-join/{refid}', [\App\Http\Controllers\VisitorController::c
 Route::post('/register', [\App\Http\Controllers\Auth\CustomLoginController::class,'custom_register'])->name('user.custom.register');
 Route::post('/login', [\App\Http\Controllers\Auth\CustomLoginController::class,'custom_login'])->name('user.login');
 
-Route::group(['middleware' => ['auth:sanctum']], function() {
+Route::group(['middleware' => ['auth:sanctum','uverify']], function() {
     Route::prefix('dashboard')->group(function() {
         Route::get('/', [\App\Http\Controllers\User\UserController::class,'index'])->name('dashboard');
 
+        //referral user
+        Route::get('/referral-user', [\App\Http\Controllers\User\UserController::class,'referral_user'])->name('user.referral.user');
         //profile
         Route::get('/profile', [\App\Http\Controllers\User\UserController::class,'profile'])->name('user.edit.profile');
         Route::post('/profile-update', [\App\Http\Controllers\User\UserController::class,'profile_update'])->name('user.profile.update');
@@ -72,6 +83,8 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
         Route::get('/withdraw-history', [\App\Http\Controllers\User\UserTransactionController::class,'withdraw_history'])->name('user.withdraw.history');
         Route::get('/send-money-history', [\App\Http\Controllers\User\UserTransactionController::class,'send_money_history'])->name('user.sendmoney.history');
         Route::get('/mobile-recharge-history', [\App\Http\Controllers\User\UserTransactionController::class,'mobile_recharge_history'])->name('user.mobile.recharge.history');
+
+
     });
 });
 
@@ -114,6 +127,8 @@ Route::group(['middleware' => ['auth:admin']], function() {
         Route::get('/active-users-get', [\App\Http\Controllers\Admin\AdminUserController::class,'active_users_get'])->name('admin.get.activeuser');
         Route::get('/inactive-users', [\App\Http\Controllers\Admin\AdminUserController::class,'inactive_users'])->name('admin.inactive.users');
         Route::get('/inactive-users-get', [\App\Http\Controllers\Admin\AdminUserController::class,'inactive_users_get'])->name('admin.get.inactiveuser');
+
+
 
         //user pin
         Route::get('/user-pin', [\App\Http\Controllers\Admin\AdminPinSurveyController::class,'user_pin'])->name('admin.user.pin');

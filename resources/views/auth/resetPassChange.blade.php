@@ -27,46 +27,30 @@
                 <div class="osahan-login py-4">
                     <div class="text-center mb-4">
                         <a href="{{route('login')}}"><img src="{{asset($gn->logo)}}" style="width: 300px;height: 66px;" alt=""></a>
-                        <h5 class="font-weight-bold mt-3">Welcome Back</h5>
-                        <p class="text-muted">Sign in to stay updated on your professional world.</p>
-                        @if (Session::has('verify_error'))
-                            <p class="text-danger">{{Session::get('verify_error')}}</p>
+                        <h5 class="font-weight-bold mt-3">Reset Your Password</h5>
+                        @if (Session::has('pass_error'))
+                            <p class="text-danger">{{Session::get('pass_error')}}</p>
                         @endif
-                        @if (Session::has('reg_email_send'))
-                            <p class="text-danger">{{Session::get('reg_email_send')}}</p>
-                        @endif
-                        @if (Session::has('account_veiry_success'))
-                            <p class="text-danger">{{Session::get('account_veiry_success')}}</p>
-                        @endif
-                        @if (Session::has('pass_success'))
-                            <p class="text-danger">{{Session::get('pass_success')}}</p>
-                        @endif
-                        @if (Session::has('reset_pass_mail_send'))
-                            <p class="text-danger">{{Session::get('reset_pass_mail_send')}}</p>
-                        @endif
-
                     </div>
-                    <form action="{{route('user.login')}}" method="post">
+                    <form action="{{route('user.reset.pass.change.save')}}" method="post">
                         @csrf
                         <div class="form-group">
-                            <label class="mb-1">Email or Phone</label>
+                            <label class="mb-1">New Password</label>
                             <div class="position-relative icon-form-control">
                                 <i class="feather-user position-absolute"></i>
-                                <input type="email" name="email" class="form-control">
+                                <input type="password" name="npass" class="form-control">
+                                <input type="hidden" name="ver_code_check" value="{{$ver_code}}" class="form-control">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="mb-1">Password</label>
+                            <label class="mb-1">Confirm Password</label>
                             <div class="position-relative icon-form-control">
                                 <i class="feather-unlock position-absolute"></i>
-                                <input type="password" name="password" class="form-control">
+                                <input type="password" name="cpass" class="form-control">
                             </div>
                         </div>
-                        <button class="btn btn-primary btn-block text-uppercase" type="submit"> Sign in </button>
-                        <div class="py-3 d-flex align-item-center">
-                            <a href="{{route('user.forgot.password')}}">Forgot password?</a>
-                            <span class="ml-auto"> New an account? <a class="font-weight-bold" href="{{route('register')}}">Join now</a></span>
-                        </div>
+                        <button class="btn btn-primary btn-block text-uppercase" type="submit"> Submit </button>
+
                     </form>
                 </div>
             </div>
