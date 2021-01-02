@@ -7,6 +7,7 @@
                 <p class="mb-0 mt-0 small">
                 </p>
             </div>
+            @include('layouts.error')
             <div class="box-body p-3">
                 <form class="js-validate" novalidate="novalidate" action="{{route('user.withdraw.money.save')}}" method="post">
                     @csrf

@@ -25,8 +25,20 @@ class UserTransactionController extends Controller
     {
 
 
+        $this->validate($request,[
+            'phone_number' => 'required',
+            'amount' => 'required',
+        ],[
+            'phone_number.required' => 'Phone Number is required',
+            'amount.required' => 'Amount is required',
+        ]);
+
+
+
         if (Auth::user()->balance < $request->amount) {
             return back()->with('alert','Insufficient Balance');
+        }elseif (Auth::user()->is_veify ==1){
+            return back()->with('alert','YOU ARE NOT ACTIVE MEMBER');
         }else{
 
             $id = Str::random(3).Auth::user()->id.rand(1,9).Str::random(3);
@@ -68,8 +80,22 @@ class UserTransactionController extends Controller
 
     public function withdraw_money_save(Request $request)
     {
+
+
+        $this->validate($request,[
+            'amount' => 'required',
+            'payment_type' => 'required',
+            'address' => 'required',
+        ],[
+            'amount.required' => 'Amount is required',
+            'payment_type.required' => 'Payment method is required',
+            'address.required' => 'Payment address is required',
+        ]);
+
         if (Auth::user()->balance < $request->amount) {
             return back()->with('alert','Insufficient Balance');
+        }elseif (Auth::user()->is_veify ==1){
+            return back()->with('alert','YOU ARE NOT ACTIVE MEMBER');
         }else {
 
             $id = Str::random(3).Auth::user()->id.rand(1,9).Str::random(3);
@@ -112,6 +138,8 @@ class UserTransactionController extends Controller
 
                 if ($total_bal < $request->amount) {
                     return back()->with('alert','Insufficient Balance');
+                }elseif (Auth::user()->is_veify ==1){
+                    return back()->with('alert','YOU ARE NOT ACTIVE MEMBER');
                 }else{
 
 

@@ -29,7 +29,14 @@
                         <a href="{{route('register')}}"><img src="{{asset('assets/frontend/')}}/img/logo.svg" alt=""></a>
                         <h5 class="font-weight-bold mt-3">Welcome Back</h5>
                         <p class="text-muted">Don't miss your next opportunity. Sign in to stay updated on your professional world.</p>
+                        @if (Session::has('email_exists_error'))
+                            <p class="text-danger">{{Session::get('email_exists_error')}}</p>
+                        @endif
+                        @if (Session::has('con_pass_error'))
+                            <p class="text-danger">{{Session::get('con_pass_error')}}</p>
+                        @endif
                     </div>
+                    @include('layouts.error')
                     <form action="{{route('user.custom.register')}}" method="post">
                         @csrf
                         <div class="form-group">

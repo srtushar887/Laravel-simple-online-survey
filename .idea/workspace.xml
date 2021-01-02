@@ -4,19 +4,19 @@
     <list default="true" id="64ee45a7-d400-464e-b06e-dd73e9eede32" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminUserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/CustomLoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/CustomLoginController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/User/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/User/UserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/User/UserPostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/User/UserPostController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/User/UserTransactionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/User/UserTransactionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/VisitorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/VisitorController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/page/generalSettings.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/page/generalSettings.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/transaction/withdrawMoney.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/transaction/withdrawMoney.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/users/activeUsers.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/users/activeUsers.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/users/inactiveUsers.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/users/inactiveUsers.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/user.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/user.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/user/userpost.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/user/userpost.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/user/include/leftbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/include/leftbar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/include/rightbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/include/rightbar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/page/changePassword.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/page/changePassword.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/transaction/mobileRescharge.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/transaction/mobileRescharge.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/user/transaction/withdrawMoney.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/transaction/withdrawMoney.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -169,7 +169,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
@@ -206,7 +206,15 @@
       <workItem from="1609144903982" duration="14000" />
       <workItem from="1609236981923" duration="5284000" />
       <workItem from="1609244104351" duration="2539000" />
-      <workItem from="1609259251102" duration="5284000" />
+      <workItem from="1609259251102" duration="6109000" />
+      <workItem from="1609304468845" duration="34000" />
+      <workItem from="1609409407965" duration="218000" />
+      <workItem from="1609434897427" duration="702000" />
+      <workItem from="1609437511761" duration="905000" />
+      <workItem from="1609438444408" duration="1921000" />
+      <workItem from="1609583701067" duration="1843000" />
+      <workItem from="1609585749137" duration="1353000" />
+      <workItem from="1609591599818" duration="963000" />
     </task>
     <servers />
   </component>

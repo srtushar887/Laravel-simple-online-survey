@@ -47,7 +47,7 @@ class UserController extends Controller
             $user_pin->save();
 
             $user = User::where('id',Auth::user()->id)->first();
-            $user->account_type = 2;
+            $user->is_veify = 2;
             $user->save();
 
             $gen = general_setting::first();
@@ -106,6 +106,17 @@ class UserController extends Controller
 
     public function change_password_save(Request $request)
     {
+
+
+        $this->validate($request,[
+            'npass' => 'required|min:8',
+            'cpass' => 'required|min:8',
+        ],[
+            'npass.required' => 'New Password is required',
+            'cpass.required' => 'Confirm Password is required',
+        ]);
+
+
         $new_pass = $request->npass;
         $con_pass = $request->cpass;
 

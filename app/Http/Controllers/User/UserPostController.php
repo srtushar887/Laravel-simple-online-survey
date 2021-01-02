@@ -83,12 +83,12 @@ class UserPostController extends Controller
             }else{
 
 
-                if (Auth::user()->account_type == 1) {
+                if (Auth::user()->is_veify == 1) {
                     $privious_count_like = post_like::where('user_id',Auth::user()->id)
                         ->where('user_type',2)
                         ->count();
 
-                    if ($privious_count_like == 2) {
+                    if ($privious_count_like >= 2) {
                         return back()->with('alert','You are not active user');
                     }else{
                         $new_post_like = new post_like();
@@ -184,12 +184,12 @@ class UserPostController extends Controller
             return back()->with('alert','You already comment this post');
         }else{
 
-            if (Auth::user()->account_type == 1) {
+            if (Auth::user()->is_veify == 1) {
                 $privious_count_comment = post_comment::where('user_id',Auth::user()->id)
                     ->where('user_type',2)
                     ->count();
 
-                if ($privious_count_comment == 2) {
+                if ($privious_count_comment >= 2) {
                     return back()->with('alert','You are not active user');
                 }else{
                     $new_comment = new post_comment();

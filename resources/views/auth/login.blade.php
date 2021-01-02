@@ -46,6 +46,7 @@
                         @endif
 
                     </div>
+                    @include('layouts.error')
                     <form action="{{route('user.login')}}" method="post">
                         @csrf
                         <div class="form-group">

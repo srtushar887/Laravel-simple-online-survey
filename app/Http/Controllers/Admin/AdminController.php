@@ -7,6 +7,7 @@ use App\Models\Admin;
 use App\Models\general_setting;
 use App\Models\survey_question;
 use App\Models\User;
+use App\Models\user_pin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -19,6 +20,9 @@ class AdminController extends Controller
     {
         $users = User::count();
         $survey_question = survey_question::count();
+
+//        user_pin::truncate();
+
         return view('admin.index',compact('users','survey_question'));
     }
 

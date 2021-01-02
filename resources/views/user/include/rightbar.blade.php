@@ -2,7 +2,7 @@
 
 
     <div class="box shadow-sm mb-3 rounded bg-white ads-box text-center overflow-hidden">
-        @if (Auth::user()->account_type == 1)
+        @if (Auth::user()->is_veify == 1)
         <div class="p-3 border-bottom">
             <h6 class="font-weight-bold text-gold">PLEASE ACTIVE YOUR ACCOUNT</h6>
         </div>
