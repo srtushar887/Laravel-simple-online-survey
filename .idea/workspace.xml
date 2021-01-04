@@ -4,21 +4,17 @@
     <list default="true" id="64ee45a7-d400-464e-b06e-dd73e9eede32" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminUserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/CustomLoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/CustomLoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/User/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/User/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminSurveyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminSurveyController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/User/UserPostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/User/UserPostController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/User/UserTransactionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/User/UserTransactionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/User/Userpost.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/User/Userpost.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/users/activeUsers.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/users/activeUsers.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/users/inactiveUsers.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/users/inactiveUsers.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/user/include/rightbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/include/rightbar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/user/page/changePassword.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/page/changePassword.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/user/transaction/mobileRescharge.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/transaction/mobileRescharge.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/user/transaction/withdrawMoney.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/transaction/withdrawMoney.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/page/generalSettings.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/page/generalSettings.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/page/passwordChange.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/page/passwordChange.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/adminLogin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/adminLogin.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/user/userpost.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/user/userpost.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/include/leftbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/include/leftbar.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,7 +210,14 @@
       <workItem from="1609438444408" duration="1921000" />
       <workItem from="1609583701067" duration="1843000" />
       <workItem from="1609585749137" duration="1353000" />
-      <workItem from="1609591599818" duration="963000" />
+      <workItem from="1609591599818" duration="1228000" />
+      <workItem from="1609594500026" duration="1586000" />
+      <workItem from="1609672938435" duration="1553000" />
+      <workItem from="1609755924236" duration="59000" />
+      <workItem from="1609760643415" duration="1293000" />
+      <workItem from="1609770922747" duration="139000" />
+      <workItem from="1609771062118" duration="149000" />
+      <workItem from="1609774638051" duration="4532000" />
     </task>
     <servers />
   </component>

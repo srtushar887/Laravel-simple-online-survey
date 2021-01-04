@@ -18,6 +18,7 @@
         <div class="col-xl-12">
             <div class="card">
                 <div class="card-body">
+                    @include('layouts.error')
                     <form class="needs-validation" novalidate="" action="{{route('admin.password.update')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="row">

@@ -30,28 +30,44 @@ class UserPostController extends Controller
         if (Auth::user()->balance < $gen->create_post) {
             return back()->with('alert','Insufficient Balance');
         }else{
-            $new_post = new survey_question();
-            if($request->hasFile('image')){
-                $image = $request->file('image');
-                $imageName = time().uniqid().'.'."jpeg";
-                $directory = 'assets/admin/images/survey/';
-                $imgUrl  = $directory.$imageName;
-                Image::make($image)->save($imgUrl);
-                $new_post->image = $imgUrl;
+
+
+            $date = Carbon::now()->format('Y-m-d');
+
+            $min_count = survey_question::where('user_type',2)
+                ->where('user_id',Auth::user()->id)
+                ->where('create_date',$date)->count();
+
+
+            if ($min_count >= 15){
+                return back()->with('alert','Your post limit has been overed');
+            }else{
+                $new_post = new survey_question();
+                if($request->hasFile('image')){
+                    $image = $request->file('image');
+                    $imageName = time().uniqid().'.'."jpeg";
+                    $directory = 'assets/admin/images/survey/';
+                    $imgUrl  = $directory.$imageName;
+                    Image::make($image)->save($imgUrl);
+                    $new_post->image = $imgUrl;
+                }
+
+                $new_post->user_type = 2;
+                $new_post->user_id = Auth::user()->id;
+                $new_post->title = $request->title;
+                $new_post->url = $request->url;
+                $new_post->question = $request->question;
+                $new_post->create_date = Carbon::now()->format('Y-m-d');
+                $new_post->save();
+
+                $user_bal = User::where('id',Auth::user()->id)->first();
+                $user_bal->balance = $user_bal->balance - $gen->create_post;
+                $user_bal->save();
+
+                return back()->with('success','Survey Question Successfully Created');
             }
 
-            $new_post->user_type = 2;
-            $new_post->user_id = Auth::user()->id;
-            $new_post->title = $request->title;
-            $new_post->url = $request->url;
-            $new_post->question = $request->question;
-            $new_post->save();
 
-            $user_bal = User::where('id',Auth::user()->id)->first();
-            $user_bal->balance = $user_bal->balance - $gen->create_post;
-            $user_bal->save();
-
-            return back()->with('success','Survey Question Successfully Created');
         }
 
     }
@@ -129,42 +145,57 @@ class UserPostController extends Controller
                     }
 
                 }else{
-                    $new_post_like = new post_like();
-                    $new_post_like->user_id = Auth::user()->id;
-                    $new_post_like->post_id = $id;
-                    $new_post_like->user_type = 2;
-                    $new_post_like->save();
-
-                    $gen = general_setting::first();
-                    $user_bal = User::where('id',Auth::user()->id)->first();
-                    $user_bal->balance = $user_bal->balance + $gen->per_like_money;
-                    $user_bal->total_income = $user_bal->total_income + $gen->per_like_money;
-                    $user_bal->save();
 
 
-                    $id = Str::random(3).Auth::user()->id.rand(1,9).Str::random(3);
+                    $date = Carbon::now()->format('Y-m-d');
 
-                    $user_tran = new user_earning();
-                    $user_tran->earning_id = $id;
-                    $user_tran->user_id = Auth::user()->id;
-                    $user_tran->amount = $gen->per_like_money;
-                    $user_tran->message = "Post Like";
-                    $user_tran->type = 1;
-                    $user_tran->earn_date = Carbon::now()->format('Y-m-d');
-                    $user_tran->save();
+                    $min_count = post_like::where('user_type',2)
+                        ->where('user_id',Auth::user()->id)
+                        ->where('create_date',$date)->count();
+
+                    if ($min_count >= 13){
+                        return back()->with('alert','Your post like limit has been overed');
+                    }else{
+                        $new_post_like = new post_like();
+                        $new_post_like->user_id = Auth::user()->id;
+                        $new_post_like->post_id = $id;
+                        $new_post_like->user_type = 2;
+                        $new_post_like->create_date = Carbon::now()->format('Y-m-d');
+                        $new_post_like->save();
+
+                        $gen = general_setting::first();
+                        $user_bal = User::where('id',Auth::user()->id)->first();
+                        $user_bal->balance = $user_bal->balance + $gen->per_like_money;
+                        $user_bal->total_income = $user_bal->total_income + $gen->per_like_money;
+                        $user_bal->save();
 
 
-                    $upline_user = User::where('my_ref_id',Auth::user()->ref_id)->first();
+                        $id = Str::random(3).Auth::user()->id.rand(1,9).Str::random(3);
 
-                    if ($upline_user) {
-                        $user_upline = User::where('id',$upline_user->id)->first();
+                        $user_tran = new user_earning();
+                        $user_tran->earning_id = $id;
+                        $user_tran->user_id = Auth::user()->id;
+                        $user_tran->amount = $gen->per_like_money;
+                        $user_tran->message = "Post Like";
+                        $user_tran->type = 1;
+                        $user_tran->earn_date = Carbon::now()->format('Y-m-d');
+                        $user_tran->save();
 
-                        $commision = ($gen->per_like_money * 5) /100;
-                        $user_upline->balance = $user_upline->balance + $commision;
-                        $user_upline->save();
+
+                        $upline_user = User::where('my_ref_id',Auth::user()->ref_id)->first();
+
+                        if ($upline_user) {
+                            $user_upline = User::where('id',$upline_user->id)->first();
+
+                            $commision = ($gen->per_like_money * 5) /100;
+                            $user_upline->balance = $user_upline->balance + $commision;
+                            $user_upline->save();
+                        }
+
+                        return back()->with('success','You Liked this post');
                     }
 
-                    return back()->with('success','You Liked this post');
+
                 }
 
             }
@@ -233,43 +264,58 @@ class UserPostController extends Controller
 
 
             }else{
-                $new_comment = new post_comment();
-                $new_comment->user_id = Auth::user()->id;
-                $new_comment->post_id = $request->post_id_comment;
-                $new_comment->user_type = 2;
-                $new_comment->comment = $request->comment;
-                $new_comment->save();
 
 
-                $gen = general_setting::first();
-                $user_bal = User::where('id',Auth::user()->id)->first();
-                $user_bal->balance = $user_bal->balance + $gen->per_post_money;
-                $user_bal->total_income = $user_bal->total_income + $gen->per_post_money;
-                $user_bal->save();
+                $date = Carbon::now()->format('Y-m-d');
+
+                $min_count = post_comment::where('user_type',2)
+                    ->where('user_id',Auth::user()->id)
+                    ->where('create_date',$date)->count();
+
+                if ($min_count >= 13){
+                    return back()->with('alert','Your post comment limit has been overed');
+                }else{
+                    $new_comment = new post_comment();
+                    $new_comment->user_id = Auth::user()->id;
+                    $new_comment->post_id = $request->post_id_comment;
+                    $new_comment->user_type = 2;
+                    $new_comment->comment = $request->comment;
+                    $new_comment->create_date = Carbon::now()->format('Y-m-d');
+                    $new_comment->save();
 
 
-                $id = Str::random(3).Auth::user()->id.rand(1,9).Str::random(3);
-
-                $user_tran = new user_earning();
-                $user_tran->earning_id = $id;
-                $user_tran->user_id = Auth::user()->id;
-                $user_tran->amount = $gen->per_post_money;
-                $user_tran->message = "Post Comment";
-                $user_tran->type = 2;
-                $user_tran->earn_date = Carbon::now()->format('Y-m-d');
-                $user_tran->save();
+                    $gen = general_setting::first();
+                    $user_bal = User::where('id',Auth::user()->id)->first();
+                    $user_bal->balance = $user_bal->balance + $gen->per_post_money;
+                    $user_bal->total_income = $user_bal->total_income + $gen->per_post_money;
+                    $user_bal->save();
 
 
-                $upline_user = User::where('my_ref_id',Auth::user()->ref_id)->first();
+                    $id = Str::random(3).Auth::user()->id.rand(1,9).Str::random(3);
 
-                if ($upline_user) {
-                    $user_upline = User::where('id',$upline_user->id)->first();
-                    $commision = ($gen->per_post_money * 5) /100;
-                    $user_upline->balance = $user_upline->balance + $commision;
-                    $user_upline->save();
+                    $user_tran = new user_earning();
+                    $user_tran->earning_id = $id;
+                    $user_tran->user_id = Auth::user()->id;
+                    $user_tran->amount = $gen->per_post_money;
+                    $user_tran->message = "Post Comment";
+                    $user_tran->type = 2;
+                    $user_tran->earn_date = Carbon::now()->format('Y-m-d');
+                    $user_tran->save();
+
+
+                    $upline_user = User::where('my_ref_id',Auth::user()->ref_id)->first();
+
+                    if ($upline_user) {
+                        $user_upline = User::where('id',$upline_user->id)->first();
+                        $commision = ($gen->per_post_money * 5) /100;
+                        $user_upline->balance = $user_upline->balance + $commision;
+                        $user_upline->save();
+                    }
+
+                    return back()->with('success','Comment Successfully Created');
                 }
 
-                return back()->with('success','Comment Successfully Created');
+
             }
 
 

@@ -63,16 +63,28 @@
                                     <input type="text" class="form-control" name="transfer_amount_percentage" value="{{$gen->transfer_amount_percentage}}">
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="validationCustom01">Create Post</label>
                                     <input type="text" class="form-control" name="create_post" value="{{$gen->create_post}}">
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="validationCustom01">Active Commission</label>
                                     <input type="text" class="form-control" name="active_commission" value="{{$gen->active_commission}}">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="validationCustom01">Mobile Recharge Limit (per day)</label>
+                                    <input type="number" class="form-control" name="mobile_limit" value="{{$gen->mobile_limit}}">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="validationCustom01">Withdraw Limit (per day)</label>
+                                    <input type="number" class="form-control" name="withdraw_limit" value="{{$gen->withdraw_limit}}">
                                 </div>
                             </div>
                             <div class="col-md-12">

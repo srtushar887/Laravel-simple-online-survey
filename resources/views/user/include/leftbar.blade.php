@@ -29,7 +29,7 @@
 
     <div class="box mb-3 shadow-sm rounded bg-white view-box overflow-hidden">
         <div class="box-title border-bottom p-3">
-            <h6 class="m-0">My Referral ID : 12345678</h6>
+            <h6 class="m-0">My Referral ID : {{Auth::user()->my_ref_id}}</h6>
         </div>
         <div class="box-title border-bottom p-3">
             <h6 class="m-0">Referral URL</h6>

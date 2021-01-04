@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\survey_question;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -54,6 +55,7 @@ class AdminSurveyController extends Controller
         $new_survey->title = $request->title;
         $new_survey->url = $request->url;
         $new_survey->question = $request->question;
+        $new_survey->create_date = Carbon::now()->format('Y-m-d');
         $new_survey->save();
 
         return back()->with('success','Survey Question Successfully Created');

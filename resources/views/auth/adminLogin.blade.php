@@ -49,6 +49,7 @@
                             <p class="text-muted">Sign in to continue to Minible.</p>
                         </div>
                         <div class="p-2 mt-4">
+                            @include('layouts.error')
                             <form action="{{route('admin.login.submit')}}" method="post">
                                 @csrf
 
@@ -58,9 +59,6 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <div class="float-right">
-                                        <a href="auth-recoverpw.html" class="text-muted">Forgot password?</a>
-                                    </div>
                                     <label for="userpassword">Password</label>
                                     <input type="password" name="password" class="form-control" id="userpassword" placeholder="Enter password">
                                 </div>

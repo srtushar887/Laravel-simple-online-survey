@@ -10,6 +10,7 @@ use App\Models\transfer_money;
 use App\Models\User;
 use App\Models\user_earning;
 use App\Models\withdraw_money;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -34,6 +35,11 @@ class UserTransactionController extends Controller
         ]);
 
 
+        $date = Carbon::now()->format('Y-m-d');
+        $user_exists_recear = mobile_recharge::where('user_id',Auth::user()->id)
+            ->where('create_date',$date)->count();
+
+        $gen = general_setting::first();
 
         if (Auth::user()->balance < $request->amount) {
             return back()->with('alert','Insufficient Balance');
@@ -41,31 +47,42 @@ class UserTransactionController extends Controller
             return back()->with('alert','YOU ARE NOT ACTIVE MEMBER');
         }else{
 
-            $id = Str::random(3).Auth::user()->id.rand(1,9).Str::random(3);
 
-            $new_recharge = new mobile_recharge();
-            $new_recharge->recharge_id = $id;
-            $new_recharge->user_id = Auth::user()->id;
-            $new_recharge->phone_number = $request->phone_number;
-            $new_recharge->amount = $request->amount;
-            $new_recharge->status = 1;
-            $new_recharge->save();
+            if ($user_exists_recear > $gen->mobile_limit){
+                return back()->with('alert','Your limit has been over');
+            }else{
+                $id = Str::random(3).Auth::user()->id.rand(1,9).Str::random(3);
 
-
-            $user_tran = new transaction();
-            $user_tran->user_id = Auth::user()->id;
-            $user_tran->amount = $request->amount;
-            $user_tran->message = "Mobile Recharge";
-            $user_tran->type = 3;
-            $user_tran->status = 1;
-            $user_tran->save();
-
-            $user_bal = User::where('id',Auth::user()->id)->first();
-            $user_bal->balance = $user_bal->balance - $request->amount;
-            $user_bal->save();
+                $new_recharge = new mobile_recharge();
+                $new_recharge->recharge_id = $id;
+                $new_recharge->user_id = Auth::user()->id;
+                $new_recharge->phone_number = $request->phone_number;
+                $new_recharge->amount = $request->amount;
+                $new_recharge->status = 1;
+                $new_recharge->create_date = Carbon::now()->format('Y-m-d');
+                $new_recharge->save();
 
 
-            return back()->with('success','Mobile Recharge Request Successfully Send');
+                $user_tran = new transaction();
+                $user_tran->user_id = Auth::user()->id;
+                $user_tran->amount = $request->amount;
+                $user_tran->message = "Mobile Recharge";
+                $user_tran->type = 3;
+                $user_tran->status = 1;
+                $user_tran->save();
+
+                $user_bal = User::where('id',Auth::user()->id)->first();
+                $user_bal->balance = $user_bal->balance - $request->amount;
+                $user_bal->save();
+
+
+                return back()->with('success','Mobile Recharge Request Successfully Send');
+            }
+
+
+
+
+
         }
 
 
@@ -98,22 +115,36 @@ class UserTransactionController extends Controller
             return back()->with('alert','YOU ARE NOT ACTIVE MEMBER');
         }else {
 
-            $id = Str::random(3).Auth::user()->id.rand(1,9).Str::random(3);
+            $gen = general_setting::first();
+            $date = Carbon::now()->format('Y-m-d');
+            $user_exists_recear = withdraw_money::where('user_id',Auth::user()->id)
+                ->where('create_date',$date)->count();
 
-            $new_with = new withdraw_money();
-            $new_with->withdraw_id = $id;
-            $new_with->user_id = Auth::user()->id;
-            $new_with->amount = $request->amount;
-            $new_with->payment_type = $request->payment_type;
-            $new_with->address = $request->address;
-            $new_with->status = 1;
-            $new_with->save();
 
-            $user_bal = User::where('id',Auth::user()->id)->first();
-            $user_bal->balance = $user_bal->balance - $request->amount;
-            $user_bal->save();
 
-            return back()->with('success','Withdraw Request Successfully Send');
+            if ($user_exists_recear > $gen->withdraw_limit){
+                return back()->with('alert','Your limit has been over');
+            }else{
+                $id = Str::random(3).Auth::user()->id.rand(1,9).Str::random(3);
+
+                $new_with = new withdraw_money();
+                $new_with->withdraw_id = $id;
+                $new_with->user_id = Auth::user()->id;
+                $new_with->amount = $request->amount;
+                $new_with->payment_type = $request->payment_type;
+                $new_with->address = $request->address;
+                $new_with->status = 1;
+                $new_with->create_date = Carbon::now()->format('Y-m-d');;
+                $new_with->save();
+
+                $user_bal = User::where('id',Auth::user()->id)->first();
+                $user_bal->balance = $user_bal->balance - $request->amount;
+                $user_bal->save();
+
+                return back()->with('success','Withdraw Request Successfully Send');
+            }
+
+
 
         }
     }

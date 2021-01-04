@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire\User;
 
+use App\Models\post_comment;
+use App\Models\post_like;
 use App\Models\survey_question;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -34,6 +36,27 @@ class Userpost extends Component
 
     public function render()
     {
-        return view('livewire.user.userpost',['posts' => survey_question::orderBy('id','desc')->paginate(10)]);
+
+
+        $likes = array();
+        $comments = array();
+
+        $exist_post_like = post_like::where('user_id',Auth::user()->id)->get();
+        foreach ($exist_post_like as $post_like){
+            array_push($likes,$post_like->post_id);
+        }
+
+        $exist_post_comment = post_comment::where('user_id',Auth::user()->id)->get();
+        foreach ($exist_post_comment as $post_coment){
+            array_push($comments,$post_coment->post_id);
+        }
+
+        $a = implode("','",$likes);
+        $b = implode("','",$comments);
+
+        return view('livewire.user.userpost',['posts' => survey_question::orderBy('id','desc')
+            ->whereNotIn('id',$likes)
+            ->OrwhereNotIn('id',$comments)
+            ->paginate(10)]);
     }
 }

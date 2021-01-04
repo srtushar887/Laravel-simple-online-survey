@@ -65,6 +65,8 @@ class AdminController extends Controller
         $gen->create_post = floatval($request->create_post);
         $gen->active_commission = floatval($request->active_commission);
         $gen->transfer_amount_percentage = $request->transfer_amount_percentage;
+        $gen->withdraw_limit = $request->withdraw_limit;
+        $gen->mobile_limit = $request->mobile_limit;
         $gen->site_address = $request->site_address;
         $gen->save();
 
@@ -117,6 +119,16 @@ class AdminController extends Controller
 
     public function password_change_update(Request $request)
     {
+
+
+        $this->validate($request,[
+           'npass' => 'required|min:8' ,
+           'cpass' => 'required|min:8'
+        ],[
+            'npass.required' => 'New password is required',
+            'cpass.required' => 'Confirm password is required',
+        ]);
+
         $new_pass = $request->npass;
         $con_pass = $request->cpass;
 
