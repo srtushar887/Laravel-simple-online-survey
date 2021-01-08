@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-flex align-items-center justify-content-between">
-                <h4 class="mb-0">Active Users</h4>
+                <h4 class="mb-0">Blocked Users</h4>
 
                 <div class="page-title-right">
 
@@ -55,16 +55,16 @@
                 </div>
                 <form action="{{route('admin.delete.user')}}" method="post">
                     @csrf
-                <div class="modal-body">
-                    <div class="form-group">
-                        are you sure to delete this user ?
-                        <input type="hidden" name="deleteuserid" class="delete_user_id">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            are you sure to delete this user ?
+                            <input type="hidden" name="deleteuserid" class="delete_user_id">
+                        </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Delete</button>
-                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Delete</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -85,7 +85,6 @@
                     @csrf
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>select status</label>
                             <select class="form-control">
                                 <option value="0">select any</option>
                                 <option value="1">Block</option>
@@ -97,34 +96,6 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Delete</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-
-
-    <div class="modal fade" id="profileview" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">View User Profile</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form action="{{route('admin.view.user.profile')}}" method="post">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="form-group">
-                            are you sure to block this user ?
-                            <input type="hidden" name="view_user_id" class="viewrpfile">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Go User Profile</button>
                     </div>
                 </form>
             </div>
@@ -148,10 +119,10 @@
             $('.blockuserid').val(id);
         }
 
+
         function viewprofile(id) {
             $('.viewrpfile').val(id);
         }
-
 
 
         $(document).ready(function () {
@@ -161,7 +132,7 @@
                 "bSort": false,
                 "ajax": {
                     "type": "GET",
-                    "url": "{{route('admin.get.activeuser')}}"
+                    "url": "{{route('admin.get.blockeduser')}}"
                 },
                 columns: [
                     { data: 'name', name: 'name',class: 'text-center', class : 'text-left' },

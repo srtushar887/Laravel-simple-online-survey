@@ -158,6 +158,7 @@
                         <ul class="sub-menu" aria-expanded="false">
                             <li><a href="{{route('admin.active.users')}}">Active Users</a></li>
                             <li><a href="{{route('admin.inactive.users')}}">In-Active Users</a></li>
+                            <li><a href="{{route('admin.blcoked.users')}}">Blocked Users</a></li>
                         </ul>
                     </li>
 

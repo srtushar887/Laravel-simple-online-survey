@@ -166,8 +166,8 @@ class UserTransactionController extends Controller
                 $gen = general_setting::first();
 
                 $total_bal = (Auth::user()->balance * $gen->transfer_amount_percentage) / 100;
-
-                if ($total_bal < $request->amount) {
+                $send_amount = Auth::user()->balance - $total_bal;
+                if ($send_amount < $request->amount) {
                     return back()->with('alert','Insufficient Balance');
                 }elseif (Auth::user()->is_veify ==1){
                     return back()->with('alert','YOU ARE NOT ACTIVE MEMBER');
@@ -181,6 +181,7 @@ class UserTransactionController extends Controller
                     $new_transfer->user_id = Auth::user()->id;
                     $new_transfer->receiver_id = $receiver_user->id;
                     $new_transfer->amount = $request->amount;
+                    $new_transfer->remark = $request->remark;
                     $new_transfer->status = 1;
                     $new_transfer->save();
 

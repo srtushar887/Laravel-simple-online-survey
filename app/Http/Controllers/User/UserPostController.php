@@ -98,7 +98,6 @@ class UserPostController extends Controller
                 return back()->with('alert','You can not like your post');
             }else{
 
-
                 if (Auth::user()->is_veify == 1) {
                     $privious_count_like = post_like::where('user_id',Auth::user()->id)
                         ->where('user_type',2)
@@ -118,6 +117,17 @@ class UserPostController extends Controller
                         $user_bal->balance = $user_bal->balance + $gen->per_like_money;
                         $user_bal->total_income = $user_bal->total_income + $gen->per_like_money;
                         $user_bal->save();
+
+
+
+                        $create_post_user = survey_question::where('id',$id)->first();
+                        if ($create_post_user->user_type == 2 ){
+                            $create_user = User::where('id',$create_post_user->user_id)->first();
+                            $create_user->balance = $create_user->balance + $gen->get_money_created_post_user;
+                            $create_user->total_income = $create_user->total_income + $gen->get_money_created_post_user;
+                            $create_user->save();
+                        }
+
 
 
                         $id = Str::random(3).Auth::user()->id.rand(1,9).Str::random(3);
@@ -163,11 +173,22 @@ class UserPostController extends Controller
                         $new_post_like->create_date = Carbon::now()->format('Y-m-d');
                         $new_post_like->save();
 
+
+
                         $gen = general_setting::first();
                         $user_bal = User::where('id',Auth::user()->id)->first();
                         $user_bal->balance = $user_bal->balance + $gen->per_like_money;
                         $user_bal->total_income = $user_bal->total_income + $gen->per_like_money;
                         $user_bal->save();
+
+
+                        $create_post_user = survey_question::where('id',$id)->first();
+                        if ($create_post_user->user_type == 2 ){
+                            $create_user = User::where('id',$create_post_user->user_id)->first();
+                            $create_user->balance = $create_user->balance + $gen->get_money_created_post_user;
+                            $create_user->total_income = $create_user->total_income + $gen->get_money_created_post_user;
+                            $create_user->save();
+                        }
 
 
                         $id = Str::random(3).Auth::user()->id.rand(1,9).Str::random(3);
@@ -238,6 +259,15 @@ class UserPostController extends Controller
                     $user_bal->save();
 
 
+                    $create_post_user = survey_question::where('id',$request->post_id_comment)->first();
+                    if ($create_post_user->user_type == 2 ){
+                        $create_user = User::where('id',$create_post_user->user_id)->first();
+                        $create_user->balance = $create_user->balance + $gen->get_money_created_post_user;
+                        $create_user->total_income = $create_user->total_income + $gen->get_money_created_post_user;
+                        $create_user->save();
+                    }
+
+
                     $id = Str::random(3).Auth::user()->id.rand(1,9).Str::random(3);
 
                     $user_tran = new user_earning();
@@ -289,6 +319,14 @@ class UserPostController extends Controller
                     $user_bal->balance = $user_bal->balance + $gen->per_post_money;
                     $user_bal->total_income = $user_bal->total_income + $gen->per_post_money;
                     $user_bal->save();
+
+                    $create_post_user = survey_question::where('id',$request->post_id_comment)->first();
+                    if ($create_post_user->user_type == 2 ){
+                        $create_user = User::where('id',$create_post_user->user_id)->first();
+                        $create_user->balance = $create_user->balance + $gen->get_money_created_post_user;
+                        $create_user->total_income = $create_user->total_income + $gen->get_money_created_post_user;
+                        $create_user->save();
+                    }
 
 
                     $id = Str::random(3).Auth::user()->id.rand(1,9).Str::random(3);

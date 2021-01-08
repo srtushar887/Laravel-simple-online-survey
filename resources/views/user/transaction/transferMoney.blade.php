@@ -30,6 +30,15 @@
                                     <input type="text" class="form-control" name="amount" placeholder="" aria-label="Enter your name" required="" aria-describedby="nameLabel" data-msg="Please enter your name." data-error-class="u-has-error" data-success-class="u-has-success">
                                 </div>
                             </div>
+                            <div class="js-form-message">
+                                <label id="nameLabel" class="form-label">
+                                    Remark
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <div class="form-group">
+                                    <textarea type="text" class="form-control" cols="5" rows="5" name="remark" placeholder="" aria-label="Enter your name" required="" aria-describedby="nameLabel" data-msg="Please enter your name." data-error-class="u-has-error" data-success-class="u-has-success"></textarea>
+                                </div>
+                            </div>
                             <div class="mb-3 text-left">
                                 <button class="font-weight-bold btn btn-primary rounded p-3">Submit</button>
                             </div>

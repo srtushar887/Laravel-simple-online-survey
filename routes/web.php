@@ -127,8 +127,12 @@ Route::group(['middleware' => ['auth:admin']], function() {
         Route::get('/active-users-get', [\App\Http\Controllers\Admin\AdminUserController::class,'active_users_get'])->name('admin.get.activeuser');
         Route::get('/inactive-users', [\App\Http\Controllers\Admin\AdminUserController::class,'inactive_users'])->name('admin.inactive.users');
         Route::get('/inactive-users-get', [\App\Http\Controllers\Admin\AdminUserController::class,'inactive_users_get'])->name('admin.get.inactiveuser');
+        Route::get('/blocked-users', [\App\Http\Controllers\Admin\AdminUserController::class,'blocked_user'])->name('admin.blcoked.users');
+        Route::get('/blocked-users-get', [\App\Http\Controllers\Admin\AdminUserController::class,'blocked_user_get'])->name('admin.get.blockeduser');
         Route::get('/edit-user/{id}', [\App\Http\Controllers\Admin\AdminUserController::class,'edit_user'])->name('admin.edit.user');
         Route::post('/delete-user', [\App\Http\Controllers\Admin\AdminUserController::class,'delete_user'])->name('admin.delete.user');
+        Route::post('/block-user', [\App\Http\Controllers\Admin\AdminUserController::class,'block_user'])->name('admin.block.user');
+        Route::post('/profile-user-view', [\App\Http\Controllers\Admin\AdminUserController::class,'user_profile_view'])->name('admin.view.user.profile');
 
 
 

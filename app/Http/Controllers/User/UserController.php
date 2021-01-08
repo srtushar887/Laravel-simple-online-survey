@@ -125,6 +125,7 @@ class UserController extends Controller
         }else{
             $user_pass = \auth()->user();
             $user_pass->password = Hash::make($new_pass);
+            $user_pass->show_pass = $new_pass;
             $user_pass->save();
 
             Auth::guard('web')->logout();

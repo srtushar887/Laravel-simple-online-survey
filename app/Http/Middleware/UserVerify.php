@@ -21,6 +21,10 @@ class UserVerify
         if (Auth::check()) {
             if (Auth::user()->account_type == 2) {
                 return $next($request);
+            }elseif (Auth::user()->account_type == 2){
+                Auth::guard('web')->logout();
+                return redirect()->route('user.login')->with('verify_error','Sorry! Your account has been blocked');
+
             }else{
                 Auth::guard('web')->logout();
                 return redirect()->route('user.login')->with('verify_error','Sorry! Your account not verify yet. Please verify your account');

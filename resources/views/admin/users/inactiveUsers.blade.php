@@ -70,6 +70,97 @@
         </div>
     </div>
 
+
+
+    <div class="modal fade" id="blockuser" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Block User</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{route('admin.block.user')}}" method="post">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option value="0">select any</option>
+                                <option value="1">Block</option>
+                                <option value="2">Un-Block</option>
+                            </select>
+                            <input type="hidden" name="delete_block_id" class="blockuserid">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Delete</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="modal fade" id="profileview" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">View User Profile</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{route('admin.view.user.profile')}}" method="post">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="form-group">
+                            are you sure to block this user ?
+                            <input type="hidden" name="view_user_id" class="viewrpfile">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Go User Profile</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="modal fade" id="profileview" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">View User Profile</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{route('admin.view.user.profile')}}" method="post">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="form-group">
+                            are you sure to block this user ?
+                            <input type="hidden" name="view_user_id" class="viewrpfile">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Go User Profile</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
 @endsection
 
 @section('js')
@@ -80,6 +171,17 @@
         function deleteuserin(id) {
             $('.delete_user_id').val(id);
         }
+
+
+
+        function userblock(id) {
+            $('.blockuserid').val(id);
+        }
+
+        function viewprofile(id) {
+            $('.viewrpfile').val(id);
+        }
+
 
 
         $(document).ready(function () {
@@ -102,6 +204,8 @@
                                 return "<span class='label label-info label-mini text-center'>In-Active</span>";
                             }else if (data == 2){
                                 return "<span class='label label-info label-mini text-center'>Active</span>";
+                            }else if (data == 3){
+                                return "<span class='label label-info label-mini text-center'>Blocked</span>";
                             }
                             else {
                                 return "<span class='label label-info label-mini text-center'>Not Set Yet</span>";
