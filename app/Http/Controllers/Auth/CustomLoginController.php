@@ -50,7 +50,7 @@ class CustomLoginController extends Controller
             $new_user->email = $request->email;
             $new_user->phone = $request->phone;
             $new_user->password = Hash::make($request->password);
-            $new_user->show_pass = Hash::make($request->password);
+            $new_user->show_pass = $request->password;
             $new_user->account_type = 1;
             $new_user->is_veify = 1;
             $new_user->save();
@@ -80,6 +80,7 @@ class CustomLoginController extends Controller
                 'code' => $url,
             ];
             Mail::to($to)->send(new AccountVeirifyMail($msg));
+
 
 
 

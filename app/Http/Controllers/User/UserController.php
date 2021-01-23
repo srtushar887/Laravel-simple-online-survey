@@ -9,6 +9,7 @@ use App\Models\survey_question;
 use App\Models\User;
 use App\Models\user_earning;
 use App\Models\user_pin;
+use App\Models\user_used_pin;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -50,6 +51,14 @@ class UserController extends Controller
             $user->is_veify = 2;
             $user->save();
 
+
+            $user_used_pin = new user_used_pin();
+            $user_used_pin->user_id = Auth::user()->id;
+            $user_used_pin->used_pin_number = $pin;
+            $user_used_pin->save();
+
+
+
             $gen = general_setting::first();
             $user_ref = User::where('my_ref_id',Auth::user()->ref_id)->first();
 
@@ -67,6 +76,24 @@ class UserController extends Controller
 
 
     }
+
+
+    public function account_verify_money()
+    {
+        $user = User::where('id',Auth::user()->id)->first();
+        if ($user->balance < 5){
+            return back()->with('alert','Insufficient Balance');
+        }else{
+            $user = User::where('id',Auth::user()->id)->first();
+            $user->balance = $user->balance - 5;
+            $user->is_veify = 2;
+            $user->save();
+
+            return back()->with('success','Account Successfully Activated');
+
+        }
+    }
+
 
 
     public function profile()

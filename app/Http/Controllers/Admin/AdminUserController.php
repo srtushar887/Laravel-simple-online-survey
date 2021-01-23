@@ -94,19 +94,23 @@ class AdminUserController extends Controller
     public function block_user(Request $request)
     {
 
-        if ($request->status == 0){
+        if ($request->unstatus == 0){
             return back()->with('alert','Please selected status');
-        }elseif ($request->status == 2){
+        }elseif ($request->unstatus == 1){
             $user_block = User::where('id',$request->delete_block_id)->first();
             $user_block->account_type = 3;
             $user_block->save();
             return back()->with('success','User Successfully Blocked');
-        }else{
+        }elseif ($request->unstatus == 2){
             $user_block = User::where('id',$request->delete_block_id)->first();
             $user_block->account_type = 2;
             $user_block->save();
-
             return back()->with('success','User Successfully Un-Blocked');
+        }
+
+        else{
+
+            return back()->with('alert','Please selected status');
         }
 
 

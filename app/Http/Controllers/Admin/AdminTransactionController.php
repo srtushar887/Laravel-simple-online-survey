@@ -3,11 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\AccountVeirifyMail;
+use App\Mail\UserMobileRechargeMail;
+use App\Mail\UserWithdrawMail;
 use App\Models\mobile_recharge;
 use App\Models\User;
+use App\Models\user_pin;
+use App\Models\user_used_pin;
 use App\Models\withdraw_money;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Yajra\DataTables\Facades\DataTables;
 
 class AdminTransactionController extends Controller
@@ -37,6 +44,19 @@ class AdminTransactionController extends Controller
         }elseif ($request->status == 1) {
             $recharge->status = 2;
             $recharge->save();
+
+
+            $user = User::where('id',$recharge->user_id)->first();
+
+            $to =$user->email;
+
+            $msg = [
+                'code' => $recharge->recharge_id,
+                'amount' => $recharge->amount,
+                'name' => $user->name
+            ];
+            Mail::to($to)->send(new UserMobileRechargeMail($msg));
+
             return back()->with('success','Recharge has been confirm');
 
         }else {
@@ -79,6 +99,19 @@ class AdminTransactionController extends Controller
         }elseif ($request->status == 1){
             $withid->status = 2;
             $withid->save();
+
+            $user = User::where('id',$withid->user_id)->first();
+
+            $to =$user->email;
+
+            $msg = [
+                'code' => $withid->withdraw_id,
+                'amount' => $withid->amount,
+                'name' => $user->name
+            ];
+            Mail::to($to)->send(new UserWithdrawMail($msg));
+
+
             return back()->with('success','Withdraw Money has been confirm');
         }else{
             $withid->status = 3;
@@ -93,6 +126,27 @@ class AdminTransactionController extends Controller
 
 
     }
+
+
+    public function user_pin_used()
+    {
+        return view('admin.users.pinUsed');
+    }
+
+
+    public function user_pin_used_get()
+    {
+        $users = user_used_pin::with('users')->latest();
+
+        return DataTables::of($users)
+            ->addColumn('action',function ($users){
+            })
+            ->editColumn('created_at',function ($users){
+                return Carbon::parse($users->created_at)->format('Y-m-d');
+            })
+            ->make(true);
+    }
+
 
 
 

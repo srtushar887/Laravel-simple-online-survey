@@ -34,6 +34,7 @@
                                 <th>User Name</th>
                                 <th>User Pin</th>
                                 <th>Pin Status</th>
+                                <th>Create Date</th>
                             </tr>
                             </thead>
                         </table>
@@ -84,6 +85,7 @@
                         },
                         defaultContent: '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0okZSQTV10ebVN9GwLfr45wbCB9tyUK_oFjmRrP9Uo000e9sU" alt="" img style="width:100%; height:100px">'
                     },
+                    { data: 'created_at', name: 'created_at',class: 'text-center', class : 'text-left' },
                 ]
             });
         })

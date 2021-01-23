@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\user_pin;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
@@ -22,6 +23,9 @@ class AdminPinSurveyController extends Controller
         $user_pin = user_pin::with('user')->get();
         return DataTables::of($user_pin)
             ->addColumn('action',function ($user_pin){
+            })
+            ->editColumn('created_at',function ($user_pin){
+                return Carbon::parse($user_pin->created_at)->format('Y-m-d');
             })
             ->make(true);
     }

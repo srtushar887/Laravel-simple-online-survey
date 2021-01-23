@@ -14,6 +14,8 @@
                         <th scope="col">ID</th>
                         <th scope="col">Receiver Name</th>
                         <th scope="col">Amount</th>
+                        <th scope="col">Remark</th>
+                        <th scope="col">Type</th>
                         <th scope="col">Created Date</th>
                     </tr>
                     </thead>
@@ -32,6 +34,14 @@
                                 @endif
                                 </td>
                             <td>{{$gn->site_currency}}{{$trans->amount}}</td>
+                            <td>{!! $trans->remark !!}</td>
+                            <td>
+                                @if($trans->user_id == Auth::user()->id)
+                                    Send
+                                @else
+                                    Received
+                                @endif
+                            </td>
                             <td> {{$trans->created_at}}</td>
                         </tr>
                     @endforeach

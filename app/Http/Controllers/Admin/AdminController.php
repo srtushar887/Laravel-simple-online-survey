@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use App\Models\general_setting;
+use App\Models\mobile_recharge;
 use App\Models\survey_question;
 use App\Models\User;
 use App\Models\user_pin;
+use App\Models\withdraw_money;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -19,11 +21,18 @@ class AdminController extends Controller
     public function index()
     {
         $users = User::count();
+        $actove_users = User::where('account_type',2)->count();
+        $inactove_users = User::where('account_type',1)->count();
+        $pin_verfied_users = User::where('is_veify',2)->count();
+        $pin_unverfied_users = User::where('is_veify',1)->count();
+        $blocked_users = User::where('account_type',3)->count();
         $survey_question = survey_question::count();
+        $new_withdraw = withdraw_money::where('status',1)->count();
+        $mobile_recharge = mobile_recharge::where('status',1)->count();
 
 //        user_pin::truncate();
 
-        return view('admin.index',compact('users','survey_question'));
+        return view('admin.index',compact('users','survey_question','actove_users','inactove_users','pin_verfied_users','pin_unverfied_users','blocked_users','new_withdraw','mobile_recharge'));
     }
 
 

@@ -30,6 +30,7 @@
                                 <th>User Name</th>
                                 <th>User Email</th>
                                 <th>User Balance</th>
+                                <th>Pin Verified</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -85,7 +86,7 @@
                     @csrf
                     <div class="modal-body">
                         <div class="form-group">
-                            <select class="form-control">
+                            <select class="form-control" name="unstatus">
                                 <option value="0">select any</option>
                                 <option value="1">Block</option>
                                 <option value="2">Un-Block</option>
@@ -95,7 +96,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Delete</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>
             </div>
@@ -138,6 +139,21 @@
                     { data: 'name', name: 'name',class: 'text-center', class : 'text-left' },
                     { data: 'email', name: 'email',class: 'text-center', class : 'text-left' },
                     { data: 'balance', name: 'balance',class: 'text-center', class : 'text-left' },
+                    {
+                        data: 'is_veify',
+                        render: function(data) {
+                            if(data == 1) {
+                                return "<span class='label label-info label-mini text-center'>Not Verify</span>";
+                            }else if (data == 2){
+                                return "<span class='label label-info label-mini text-center'>Verify</span>";
+                            }
+                            else {
+                                return "<span class='label label-info label-mini text-center'>Not Set Yet</span>";
+                            }
+
+                        },
+                        defaultContent: '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0okZSQTV10ebVN9GwLfr45wbCB9tyUK_oFjmRrP9Uo000e9sU" alt="" img style="width:100%; height:100px">'
+                    },
                     {
                         data: 'account_type',
                         render: function(data) {

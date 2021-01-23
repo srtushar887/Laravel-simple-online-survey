@@ -101,12 +101,10 @@ class UserTransactionController extends Controller
 
         $this->validate($request,[
             'amount' => 'required',
-            'payment_type' => 'required',
             'address' => 'required',
         ],[
             'amount.required' => 'Amount is required',
-            'payment_type.required' => 'Payment method is required',
-            'address.required' => 'Payment address is required',
+            'address.required' => 'Payment Address is required',
         ]);
 
         if (Auth::user()->balance < $request->amount) {
@@ -183,6 +181,7 @@ class UserTransactionController extends Controller
                     $new_transfer->amount = $request->amount;
                     $new_transfer->remark = $request->remark;
                     $new_transfer->status = 1;
+                    $new_transfer->type = 1;
                     $new_transfer->save();
 
                     $receiver_user->balance = $receiver_user->balance + $request->amount;
@@ -219,7 +218,9 @@ class UserTransactionController extends Controller
 
     public function send_money_history(Request $request)
     {
-        $sendmoney = transfer_money::where('user_id',Auth::user()->id)->orderBy('id','desc')->paginate(10);
+        $sendmoney = transfer_money::where('user_id',Auth::user()->id)
+            ->orWhere('receiver_id',Auth::user()->id)
+            ->orderBy('id','desc')->paginate(10);
         return view('user.history.sendmoneyHistory',compact('sendmoney'));
     }
 

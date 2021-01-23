@@ -55,6 +55,7 @@ Route::group(['middleware' => ['auth:sanctum','uverify']], function() {
 
         //user account verify
         Route::get('/account-verify', [\App\Http\Controllers\User\UserController::class,'account_verify'])->name('user.account.verify');
+        Route::get('/account-verify-money', [\App\Http\Controllers\User\UserController::class,'account_verify_money'])->name('user.account.verify.money');
         Route::post('/account-verify-submit', [\App\Http\Controllers\User\UserController::class,'account_verify_submit'])->name('user.pin.active.submit');
 
         //create post
@@ -151,5 +152,9 @@ Route::group(['middleware' => ['auth:admin']], function() {
         Route::get('/withdraw-money', [\App\Http\Controllers\Admin\AdminTransactionController::class,'withdraw_money'])->name('admin.withdraw.money');
         Route::get('/withdraw-money-get', [\App\Http\Controllers\Admin\AdminTransactionController::class,'withdraw_money_get'])->name('admin.get.withdrawmoney');
         Route::post('/withdraw-money-status-change', [\App\Http\Controllers\Admin\AdminTransactionController::class,'withdraw_money_status_change'])->name('admin.withdraw.money.save');
+
+        //user pin used
+        Route::get('/user-pin-used', [\App\Http\Controllers\Admin\AdminTransactionController::class,'user_pin_used'])->name('admin.user.pin.used');
+        Route::get('/user-pin-used-get', [\App\Http\Controllers\Admin\AdminTransactionController::class,'user_pin_used_get'])->name('admin.get.userusedpin');
     });
 });

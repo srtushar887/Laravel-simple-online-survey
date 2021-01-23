@@ -23,6 +23,22 @@
             </div>
         @endif
     </div>
+    @if (Auth::user()->is_veify == 1)
+    <div class="box shadow-sm mb-3 rounded bg-white ads-box text-center overflow-hidden">
+
+            <div class="p-3 border-bottom">
+                <h6 class="font-weight-bold text-gold">PLEASE ACTIVE YOUR ACCOUNT USING MONEY</h6>
+            </div>
+            <div class="p-3">
+                <a href="{{route('user.account.verify.money')}}">
+
+                    <button type="button" class="btn btn-outline-gold pl-4 pr-4"> CLICK HERE </button>
+                </a>
+
+            </div>
+
+    </div>
+    @endif
     <div class="box shadow-sm border rounded bg-white mb-3">
         <div class="box-title border-bottom p-3">
             <h6 class="m-0">Your Recent Post

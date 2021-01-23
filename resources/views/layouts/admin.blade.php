@@ -186,6 +186,13 @@
                         </a>
                     </li>
 
+                    <li>
+                        <a href="{{route('admin.user.pin.used')}}">
+                            <i class="uil-home-alt"></i>
+                            <span>User Pin Used</span>
+                        </a>
+                    </li>
+
 
 
 
